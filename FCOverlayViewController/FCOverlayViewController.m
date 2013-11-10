@@ -55,6 +55,8 @@
     
     if ([keyWindow.rootViewController isKindOfClass:[self class]]) {
         [keyWindow.rootViewController dismissViewControllerAnimated:animated completion:completion];
+    } else {
+        if (completion) completion();
     }
 }
 
