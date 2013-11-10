@@ -21,7 +21,8 @@
 		CB2C52C4182FC298009D63C1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CB2C52C2182FC298009D63C1 /* InfoPlist.strings */; };
 		CB2C52C6182FC298009D63C1 /* FCOverlayViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2C52C5182FC298009D63C1 /* FCOverlayViewControllerTests.m */; };
 		CB2C52D1182FC2F5009D63C1 /* FCOverlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2C52D0182FC2F5009D63C1 /* FCOverlayViewController.m */; };
-		CB2C52D4182FC386009D63C1 /* ShowMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2C52D3182FC386009D63C1 /* ShowMeViewController.m */; };
+		CB2C52D4182FC386009D63C1 /* ExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2C52D3182FC386009D63C1 /* ExampleViewController.m */; };
+		CB2C52D7182FC45B009D63C1 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2C52D6182FC45B009D63C1 /* BaseViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,8 +55,10 @@
 		CB2C52C5182FC298009D63C1 /* FCOverlayViewControllerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FCOverlayViewControllerTests.m; sourceTree = "<group>"; };
 		CB2C52CF182FC2F5009D63C1 /* FCOverlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCOverlayViewController.h; sourceTree = "<group>"; };
 		CB2C52D0182FC2F5009D63C1 /* FCOverlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCOverlayViewController.m; sourceTree = "<group>"; };
-		CB2C52D2182FC386009D63C1 /* ShowMeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowMeViewController.h; sourceTree = "<group>"; };
-		CB2C52D3182FC386009D63C1 /* ShowMeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowMeViewController.m; sourceTree = "<group>"; };
+		CB2C52D2182FC386009D63C1 /* ExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExampleViewController.h; sourceTree = "<group>"; };
+		CB2C52D3182FC386009D63C1 /* ExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExampleViewController.m; sourceTree = "<group>"; };
+		CB2C52D5182FC45B009D63C1 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		CB2C52D6182FC45B009D63C1 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,8 +118,10 @@
 		CB2C52A0182FC298009D63C1 /* FCOverlayViewController */ = {
 			isa = PBXGroup;
 			children = (
-				CB2C52D2182FC386009D63C1 /* ShowMeViewController.h */,
-				CB2C52D3182FC386009D63C1 /* ShowMeViewController.m */,
+				CB2C52D2182FC386009D63C1 /* ExampleViewController.h */,
+				CB2C52D3182FC386009D63C1 /* ExampleViewController.m */,
+				CB2C52D5182FC45B009D63C1 /* BaseViewController.h */,
+				CB2C52D6182FC45B009D63C1 /* BaseViewController.m */,
 				CB2C52CF182FC2F5009D63C1 /* FCOverlayViewController.h */,
 				CB2C52D0182FC2F5009D63C1 /* FCOverlayViewController.m */,
 				CB2C52A9182FC298009D63C1 /* AppDelegate.h */,
@@ -254,7 +259,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB2C52D4182FC386009D63C1 /* ShowMeViewController.m in Sources */,
+				CB2C52D4182FC386009D63C1 /* ExampleViewController.m in Sources */,
+				CB2C52D7182FC45B009D63C1 /* BaseViewController.m in Sources */,
 				CB2C52AB182FC298009D63C1 /* AppDelegate.m in Sources */,
 				CB2C52D1182FC2F5009D63C1 /* FCOverlayViewController.m in Sources */,
 				CB2C52A7182FC298009D63C1 /* main.m in Sources */,

@@ -6,23 +6,23 @@
 //  Copyright (c) 2013 Farcoding. All rights reserved.
 //
 
-#import "ShowMeViewController.h"
+#import "ExampleViewController.h"
 #import "FCOverlayViewController.h"
 
-@interface ShowMeViewController ()
+@interface ExampleViewController ()
 @property (nonatomic, strong) UIButton *dismissButton;
 @property (nonatomic, strong) UIButton *createNewButton;
 @property (nonatomic, strong) UIButton *hideOneButton;
 @property (nonatomic, strong) UIButton *hideAllButton;
 @end
 
-@implementation ShowMeViewController
+@implementation ExampleViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor colorWithWhite:0 alpha:0.3];
+    self.view.backgroundColor = [UIColor colorWithRed:1 green:0 blue:0 alpha:0.3];
 	
     self.dismissButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [self.dismissButton setTitle:@"dismiss" forState:UIControlStateNormal];
@@ -108,7 +108,7 @@
 
 - (void)createNew
 {
-    ShowMeViewController *showController = [[ShowMeViewController alloc] init];
+    ExampleViewController *showController = [[ExampleViewController alloc] init];
     
     [FCOverlayViewController presentOverlayWithViewController:showController animated:YES completion:nil];
 }
