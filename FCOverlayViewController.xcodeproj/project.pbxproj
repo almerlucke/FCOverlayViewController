@@ -14,13 +14,14 @@
 		CB2C52A7182FC298009D63C1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2C52A6182FC298009D63C1 /* main.m */; };
 		CB2C52AB182FC298009D63C1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2C52AA182FC298009D63C1 /* AppDelegate.m */; };
 		CB2C52AE182FC298009D63C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB2C52AC182FC298009D63C1 /* Main.storyboard */; };
-		CB2C52B1182FC298009D63C1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2C52B0182FC298009D63C1 /* ViewController.m */; };
 		CB2C52B3182FC298009D63C1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB2C52B2182FC298009D63C1 /* Images.xcassets */; };
 		CB2C52BA182FC298009D63C1 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB2C52B9182FC298009D63C1 /* XCTest.framework */; };
 		CB2C52BB182FC298009D63C1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB2C529A182FC298009D63C1 /* Foundation.framework */; };
 		CB2C52BC182FC298009D63C1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB2C529E182FC298009D63C1 /* UIKit.framework */; };
 		CB2C52C4182FC298009D63C1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CB2C52C2182FC298009D63C1 /* InfoPlist.strings */; };
 		CB2C52C6182FC298009D63C1 /* FCOverlayViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2C52C5182FC298009D63C1 /* FCOverlayViewControllerTests.m */; };
+		CB2C52D1182FC2F5009D63C1 /* FCOverlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2C52D0182FC2F5009D63C1 /* FCOverlayViewController.m */; };
+		CB2C52D4182FC386009D63C1 /* ShowMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2C52D3182FC386009D63C1 /* ShowMeViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,14 +46,16 @@
 		CB2C52A9182FC298009D63C1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CB2C52AA182FC298009D63C1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		CB2C52AD182FC298009D63C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		CB2C52AF182FC298009D63C1 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		CB2C52B0182FC298009D63C1 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		CB2C52B2182FC298009D63C1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CB2C52B8182FC298009D63C1 /* FCOverlayViewControllerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FCOverlayViewControllerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB2C52B9182FC298009D63C1 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		CB2C52C1182FC298009D63C1 /* FCOverlayViewControllerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FCOverlayViewControllerTests-Info.plist"; sourceTree = "<group>"; };
 		CB2C52C3182FC298009D63C1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CB2C52C5182FC298009D63C1 /* FCOverlayViewControllerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FCOverlayViewControllerTests.m; sourceTree = "<group>"; };
+		CB2C52CF182FC2F5009D63C1 /* FCOverlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCOverlayViewController.h; sourceTree = "<group>"; };
+		CB2C52D0182FC2F5009D63C1 /* FCOverlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCOverlayViewController.m; sourceTree = "<group>"; };
+		CB2C52D2182FC386009D63C1 /* ShowMeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowMeViewController.h; sourceTree = "<group>"; };
+		CB2C52D3182FC386009D63C1 /* ShowMeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowMeViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,11 +115,13 @@
 		CB2C52A0182FC298009D63C1 /* FCOverlayViewController */ = {
 			isa = PBXGroup;
 			children = (
+				CB2C52D2182FC386009D63C1 /* ShowMeViewController.h */,
+				CB2C52D3182FC386009D63C1 /* ShowMeViewController.m */,
+				CB2C52CF182FC2F5009D63C1 /* FCOverlayViewController.h */,
+				CB2C52D0182FC2F5009D63C1 /* FCOverlayViewController.m */,
 				CB2C52A9182FC298009D63C1 /* AppDelegate.h */,
 				CB2C52AA182FC298009D63C1 /* AppDelegate.m */,
 				CB2C52AC182FC298009D63C1 /* Main.storyboard */,
-				CB2C52AF182FC298009D63C1 /* ViewController.h */,
-				CB2C52B0182FC298009D63C1 /* ViewController.m */,
 				CB2C52B2182FC298009D63C1 /* Images.xcassets */,
 				CB2C52A1182FC298009D63C1 /* Supporting Files */,
 			);
@@ -249,8 +254,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB2C52B1182FC298009D63C1 /* ViewController.m in Sources */,
+				CB2C52D4182FC386009D63C1 /* ShowMeViewController.m in Sources */,
 				CB2C52AB182FC298009D63C1 /* AppDelegate.m in Sources */,
+				CB2C52D1182FC2F5009D63C1 /* FCOverlayViewController.m in Sources */,
 				CB2C52A7182FC298009D63C1 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
