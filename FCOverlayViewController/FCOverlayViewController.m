@@ -129,7 +129,6 @@
         // break retain cycle by setting ptr's to nil
         self.oldWindow = nil;
         self.currentWindow.rootViewController = nil;
-        self.currentWindow = nil;
         
         // call completion block
         if (completion) completion();
