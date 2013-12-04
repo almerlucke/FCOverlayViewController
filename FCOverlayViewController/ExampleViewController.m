@@ -22,7 +22,7 @@
 {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor colorWithRed:1 green:0 blue:0 alpha:0.3];
+    self.view.backgroundColor = [UIColor colorWithRed:1 green:0 blue:0 alpha:1];
 	
     self.dismissButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [self.dismissButton setTitle:@"dismiss" forState:UIControlStateNormal];
@@ -81,12 +81,15 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
 {
-    return UIInterfaceOrientationIsPortrait(toInterfaceOrientation);
+//    return UIInterfaceOrientationIsPortrait(toInterfaceOrientation);
+    
+    return YES;
 }
 
 - (NSUInteger)supportedInterfaceOrientations
 {
-    UIInterfaceOrientationMask mask = UIInterfaceOrientationMaskPortrait;
+//    UIInterfaceOrientationMask mask = UIInterfaceOrientationMaskPortrait;
+    UIInterfaceOrientationMask mask = UIInterfaceOrientationMaskAll;
     
     return mask;
 }
@@ -110,7 +113,10 @@
 {
     ExampleViewController *showController = [[ExampleViewController alloc] init];
     
-    [FCOverlayViewController presentOverlayWithViewController:showController animated:YES completion:nil];
+    [FCOverlayViewController presentOverlayWithViewController:showController
+                                                  windowLevel:UIWindowLevelAlert
+                                                     animated:YES
+                                                   completion:nil];
 }
 
 @end

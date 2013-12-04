@@ -11,6 +11,7 @@
 @interface FCOverlayViewController ()
 @property (nonatomic, strong) UIWindow *oldWindow;
 @property (nonatomic, strong) UIWindow *currentWindow;
+@property (nonatomic, strong) UIViewController *viewControllerToPresent;
 @property (nonatomic) BOOL showAnimated;
 @property (nonatomic, copy) void (^completionBlock)();
 @end
@@ -18,11 +19,27 @@
 
 @implementation FCOverlayViewController
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor clearColor];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    if (self.viewControllerToPresent) {
+        // present the view controller
+        [self presentViewController:self.viewControllerToPresent
+                           animated:self.showAnimated
+                         completion:self.completionBlock];
+        
+        // make sure we never present the view controller again (for example after it is dismissed)
+        self.viewControllerToPresent = nil;
+    }
 }
 
 
@@ -77,6 +94,17 @@
                                 animated:(BOOL)animated
                               completion:(void (^)())completion
 {
+    [self presentOverlayWithViewController:controller
+                               windowLevel:UIWindowLevelNormal
+                                  animated:animated
+                                completion:completion];
+}
+
++ (void)presentOverlayWithViewController:(UIViewController *)controller
+                             windowLevel:(UIWindowLevel)windowLevel
+                                animated:(BOOL)animated
+                              completion:(void (^)())completion
+{
     FCOverlayViewController *overlayController = [[FCOverlayViewController alloc] init];
     
     // set up new window with frame of current window
@@ -89,30 +117,18 @@
     overlayController.currentWindow = newWindow;
     overlayController.oldWindow = currentWindow;
     overlayController.showAnimated = animated;
+    overlayController.viewControllerToPresent = controller;
     overlayController.completionBlock = completion;
     
     // set up new window
     newWindow.backgroundColor = [UIColor clearColor];
-    newWindow.windowLevel = UIWindowLevelNormal;
     newWindow.rootViewController = overlayController;
+    newWindow.windowLevel = windowLevel;
     [newWindow makeKeyAndVisible];
-    
-    // call with a short delay to prevent complaints about transitions
-    [overlayController performSelector:@selector(presentOverlay:) withObject:controller afterDelay:0.1];
 }
 
 /**
- *  Wrapper around presentViewController
- *
- *  @param controller
- */
-- (void)presentOverlay:(UIViewController *)controller
-{
-    [self presentViewController:controller animated:self.showAnimated completion:self.completionBlock];
-}
-
-/**
- *  Overwrite dismissViewControllerAnimated to be able to close current window and
+ *  Overwrite dismissViewControllerAnimated to be able to close the current window and
  *  restore the old window. View controllers that are overlayed should call
  *  [self.presentingViewController dismissViewControllerAnimated:flag completion:completion] to
  *  dismiss the overlay controller and corresponding window

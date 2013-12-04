@@ -9,7 +9,7 @@
 
 /**
  *  Use the presentOverlayWithViewController class method to present a view controller in a new window
- *  on top of everything else. The window level is set to normal so the status bar is not covered.
+ *  on top of everything else. The window level can be set, default is UIWindowLevelNormal.
  *
  *  The overlay can be dismissed from the presented view controller with 
  *  [self.presentingViewController dismissViewControllerAnimated:animated completion:completion] OR with a call to
@@ -25,7 +25,8 @@
 @interface FCOverlayViewController : UIViewController
 
 /**
- *  Present a view controller in a new window, use FCOverlayViewController as in between root view controller
+ *  Present a view controller in a new window (UIWindowLevelNormal), 
+ *  use FCOverlayViewController as in between root view controller
  *  to be able to present the given view controller in an animated way.
  *
  *  @param controller
@@ -33,6 +34,21 @@
  *  @param completion
  */
 + (void)presentOverlayWithViewController:(UIViewController *)controller
+                                animated:(BOOL)animated
+                              completion:(void (^)())completion;
+
+/**
+ *  Present a view controller in a new window with a specific window level, 
+ *  use FCOverlayViewController as in between root view controller to be able to present the 
+ *  given view controller in an animated way.
+ *
+ *  @param controller
+ *  @param windowLevel
+ *  @param animated
+ *  @param completion
+ */
++ (void)presentOverlayWithViewController:(UIViewController *)controller
+                             windowLevel:(UIWindowLevel)windowLevel
                                 animated:(BOOL)animated
                               completion:(void (^)())completion;
 

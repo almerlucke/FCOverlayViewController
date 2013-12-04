@@ -20,6 +20,7 @@
     ExampleViewController *exampleController = [[ExampleViewController alloc] init];
     
     [FCOverlayViewController presentOverlayWithViewController:exampleController
+                                                  windowLevel:UIWindowLevelAlert
                                                      animated:YES
                                                    completion:nil];
 }
