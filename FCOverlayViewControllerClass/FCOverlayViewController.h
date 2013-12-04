@@ -5,65 +5,33 @@
 //  Copyright (c) 2013 Farcoding. All rights reserved.
 //
 
+
 #import <Foundation/Foundation.h>
 
+
 /**
- *  Use the presentOverlayWithViewController class method to present a view controller in a new window
- *  on top of everything else. The window level can be set, default is UIWindowLevelNormal.
- *
- *  The overlay can be dismissed from the presented view controller with 
- *  [self.presentingViewController dismissViewControllerAnimated:animated completion:completion] OR with a call to
- *  [FCOverlayViewController dismissOverlayAnimated:animated completion:completion]. 
- *
- *  The two class methods to dismiss the overlay(s) are convenience methods so the overlay(s) can be dismissed from
- *  any part of the application.
- *
+ *  In-between view controller to allow animating the presentation of the actual view controller to be presented. 
+ *  This class also makes sure the new window will not be deallocated until the presented view controller is dismissed.
  *  All auto rotation methods are forwarded to the presented view controller to allow the presented view controller
  *  to decide which rotations are allowed
  */
-
 @interface FCOverlayViewController : UIViewController
 
 /**
- *  Present a view controller in a new window (UIWindowLevelNormal), 
- *  use FCOverlayViewController as in between root view controller
- *  to be able to present the given view controller in an animated way.
+ *  This method should never be called by any other class then the FCOverlay class.
  *
- *  @param controller
- *  @param animated
- *  @param completion
- */
-+ (void)presentOverlayWithViewController:(UIViewController *)controller
-                                animated:(BOOL)animated
-                              completion:(void (^)())completion;
-
-/**
- *  Present a view controller in a new window with a specific window level, 
- *  use FCOverlayViewController as in between root view controller to be able to present the 
- *  given view controller in an animated way.
+ *  @param oldWindow      the old key and visible window
+ *  @param newWindow      the new key and visible window
+ *  @param viewController the view controller to be presented
+ *  @param animated       animate the presentation or not
+ *  @param completion     called when the presentation is finished
  *
- *  @param controller
- *  @param windowLevel
- *  @param animated
- *  @param completion
+ *  @return In-between FCOverlayViewController instance
  */
-+ (void)presentOverlayWithViewController:(UIViewController *)controller
-                             windowLevel:(UIWindowLevel)windowLevel
-                                animated:(BOOL)animated
-                              completion:(void (^)())completion;
-
-/**
- *  Dismiss topmost overlay view controller plus it's window, this can also be accomplished by
- *  calling dismissViewControllerAnimated on the presentingViewController of the presented overlayed view controller.
- *
- *  @param animated
- *  @param completion
- */
-+ (void)dismissOverlayAnimated:(BOOL)animated completion:(void (^)())completion;
-
-/**
- *  Dismiss all overlays immediately
- */
-+ (void)dismissAllOverlays;
+- (instancetype)initWithOldWindow:(UIWindow *)oldWindow
+                        newWindow:(UIWindow *)newWindow
+                   viewController:(UIViewController *)viewController
+                         animated:(BOOL)animated
+                       completion:(void (^)(void))completion;
 
 @end

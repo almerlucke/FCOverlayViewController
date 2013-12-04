@@ -7,7 +7,7 @@
 //
 
 #import "BaseViewController.h"
-#import "FCOverlayViewController.h"
+#import "FCOverlay.h"
 #import "ExampleViewController.h"
 
 @interface BaseViewController ()
@@ -19,10 +19,10 @@
 {
     ExampleViewController *exampleController = [[ExampleViewController alloc] init];
     
-    [FCOverlayViewController presentOverlayWithViewController:exampleController
-                                                  windowLevel:UIWindowLevelAlert
-                                                     animated:YES
-                                                   completion:nil];
+    [FCOverlay presentOverlayWithViewController:exampleController
+                                    windowLevel:UIWindowLevelAlert
+                                       animated:YES
+                                     completion:nil];
 }
 
 @end

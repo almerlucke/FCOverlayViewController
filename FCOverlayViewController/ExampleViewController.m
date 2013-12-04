@@ -7,7 +7,7 @@
 //
 
 #import "ExampleViewController.h"
-#import "FCOverlayViewController.h"
+#import "FCOverlay.h"
 
 @interface ExampleViewController ()
 @property (nonatomic, strong) UIButton *dismissButton;
@@ -101,22 +101,22 @@
 
 - (void)hideOne
 {
-    [FCOverlayViewController dismissOverlayAnimated:YES completion:nil];
+    [FCOverlay dismissOverlayAnimated:YES completion:nil];
 }
 
 - (void)hideAll
 {
-    [FCOverlayViewController dismissAllOverlays];
+    [FCOverlay dismissAllOverlays];
 }
 
 - (void)createNew
 {
     ExampleViewController *showController = [[ExampleViewController alloc] init];
     
-    [FCOverlayViewController presentOverlayWithViewController:showController
-                                                  windowLevel:UIWindowLevelAlert
-                                                     animated:YES
-                                                   completion:nil];
+    [FCOverlay presentOverlayWithViewController:showController
+                                    windowLevel:UIWindowLevelAlert
+                                       animated:YES
+                                     completion:nil];
 }
 
 @end

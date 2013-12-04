@@ -5,9 +5,11 @@
 //  Copyright (c) 2013 Farcoding. All rights reserved.
 //
 
+
 #import "FCOverlayViewController.h"
 
 
+// private interface
 @interface FCOverlayViewController ()
 @property (nonatomic, strong) UIWindow *oldWindow;
 @property (nonatomic, strong) UIWindow *currentWindow;
@@ -19,6 +21,24 @@
 
 @implementation FCOverlayViewController
 
+#pragma mark - Initialize, Appearance and Loading
+
+- (instancetype)initWithOldWindow:(UIWindow *)oldWindow
+                        newWindow:(UIWindow *)newWindow
+                   viewController:(UIViewController *)viewController
+                         animated:(BOOL)animated
+                       completion:(void (^)(void))completion {
+    if ((self = [super init])) {
+        self.oldWindow = oldWindow;
+        self.currentWindow = newWindow;
+        self.viewControllerToPresent = viewController;
+        self.showAnimated = animated;
+        self.completionBlock = completion;
+    }
+    
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -26,6 +46,10 @@
     self.view.backgroundColor = [UIColor clearColor];
 }
 
+// Do the actual presentation from viewDidAppear to make sure we don't get any complaints about
+// view transitions in progress etc.
+// This is the right way to present any view controller immediately from another view controller
+// (viewDidLoad and viewWillAppear are NOT the methods you want to do this from)
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
@@ -64,69 +88,6 @@
 
 
 #pragma mark - Show/Hide Overlay
-
-+ (void)dismissOverlayAnimated:(BOOL)animated completion:(void (^)())completion
-{
-    UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
-    
-    if ([keyWindow.rootViewController isKindOfClass:[self class]]) {
-        [keyWindow.rootViewController dismissViewControllerAnimated:animated completion:completion];
-    } else {
-        if (completion) completion();
-    }
-}
-
-+ (void)dismissAllOverlays
-{
-    while (YES) {
-        UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
-    
-        if ([keyWindow.rootViewController isKindOfClass:[self class]]) {
-            [keyWindow.rootViewController dismissViewControllerAnimated:NO completion:nil];
-        } else {
-            break;
-        }
-    }
-}
-
-+ (void)presentOverlayWithViewController:(UIViewController *)controller
-                                animated:(BOOL)animated
-                              completion:(void (^)())completion
-{
-    [self presentOverlayWithViewController:controller
-                               windowLevel:UIWindowLevelNormal
-                                  animated:animated
-                                completion:completion];
-}
-
-+ (void)presentOverlayWithViewController:(UIViewController *)controller
-                             windowLevel:(UIWindowLevel)windowLevel
-                                animated:(BOOL)animated
-                              completion:(void (^)())completion
-{
-    FCOverlayViewController *overlayController = [[FCOverlayViewController alloc] init];
-    
-    // set up new window with frame of current window
-    UIWindow *currentWindow = [UIApplication sharedApplication].keyWindow;
-    CGRect windowFrame = currentWindow.frame;
-    UIWindow *newWindow = [[UIWindow alloc] initWithFrame:windowFrame];
-    
-    // keep a pointer to the old window to be able to make it the key window again
-    // keep a pointer to the new window to make sure it is not deallocated immediately
-    overlayController.currentWindow = newWindow;
-    overlayController.oldWindow = currentWindow;
-    
-    // set presentation properties
-    overlayController.showAnimated = animated;
-    overlayController.viewControllerToPresent = controller;
-    overlayController.completionBlock = completion;
-    
-    // set new window properties and make key and visible
-    newWindow.backgroundColor = [UIColor clearColor];
-    newWindow.rootViewController = overlayController;
-    newWindow.windowLevel = windowLevel;
-    [newWindow makeKeyAndVisible];
-}
 
 // Overwrite dismissViewControllerAnimated to be able to close the current window and
 // restore the old window. View controllers that are overlayed should call

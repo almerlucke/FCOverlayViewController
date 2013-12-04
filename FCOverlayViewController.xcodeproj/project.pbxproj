@@ -22,6 +22,7 @@
 		CB2C52C6182FC298009D63C1 /* FCOverlayViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2C52C5182FC298009D63C1 /* FCOverlayViewControllerTests.m */; };
 		CB2C52D4182FC386009D63C1 /* ExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2C52D3182FC386009D63C1 /* ExampleViewController.m */; };
 		CB2C52D7182FC45B009D63C1 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2C52D6182FC45B009D63C1 /* BaseViewController.m */; };
+		CB3CC79E184FEC0A00C6CAF2 /* FCOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3CC79D184FEC0A00C6CAF2 /* FCOverlay.m */; };
 		CB67DEFF184FDB8600512CC8 /* FCOverlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB67DEFE184FDB8600512CC8 /* FCOverlayViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +58,8 @@
 		CB2C52D3182FC386009D63C1 /* ExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExampleViewController.m; sourceTree = "<group>"; };
 		CB2C52D5182FC45B009D63C1 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		CB2C52D6182FC45B009D63C1 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		CB3CC79C184FEC0A00C6CAF2 /* FCOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCOverlay.h; sourceTree = "<group>"; };
+		CB3CC79D184FEC0A00C6CAF2 /* FCOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCOverlay.m; sourceTree = "<group>"; };
 		CB67DEFD184FDB8600512CC8 /* FCOverlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCOverlayViewController.h; sourceTree = "<group>"; };
 		CB67DEFE184FDB8600512CC8 /* FCOverlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCOverlayViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -166,6 +169,8 @@
 			children = (
 				CB67DEFD184FDB8600512CC8 /* FCOverlayViewController.h */,
 				CB67DEFE184FDB8600512CC8 /* FCOverlayViewController.m */,
+				CB3CC79C184FEC0A00C6CAF2 /* FCOverlay.h */,
+				CB3CC79D184FEC0A00C6CAF2 /* FCOverlay.m */,
 			);
 			name = FCOverlayViewControllerClass;
 			path = ../FCOverlayViewControllerClass;
@@ -273,6 +278,7 @@
 				CB2C52D7182FC45B009D63C1 /* BaseViewController.m in Sources */,
 				CB2C52AB182FC298009D63C1 /* AppDelegate.m in Sources */,
 				CB2C52A7182FC298009D63C1 /* main.m in Sources */,
+				CB3CC79E184FEC0A00C6CAF2 /* FCOverlay.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
