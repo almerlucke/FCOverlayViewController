@@ -19,7 +19,6 @@
 
 @implementation FCOverlayViewController
 
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -116,26 +115,23 @@
     // keep a pointer to the new window to make sure it is not deallocated immediately
     overlayController.currentWindow = newWindow;
     overlayController.oldWindow = currentWindow;
+    
+    // set presentation properties
     overlayController.showAnimated = animated;
     overlayController.viewControllerToPresent = controller;
     overlayController.completionBlock = completion;
     
-    // set up new window
+    // set new window properties and make key and visible
     newWindow.backgroundColor = [UIColor clearColor];
     newWindow.rootViewController = overlayController;
     newWindow.windowLevel = windowLevel;
     [newWindow makeKeyAndVisible];
 }
 
-/**
- *  Overwrite dismissViewControllerAnimated to be able to close the current window and
- *  restore the old window. View controllers that are overlayed should call
- *  [self.presentingViewController dismissViewControllerAnimated:flag completion:completion] to
- *  dismiss the overlay controller and corresponding window
- *
- *  @param flag
- *  @param completion
- */
+// Overwrite dismissViewControllerAnimated to be able to close the current window and
+// restore the old window. View controllers that are overlayed should call
+// [self.presentingViewController dismissViewControllerAnimated:flag completion:completion] to
+// dismiss the overlay controller and corresponding window
 - (void)dismissViewControllerAnimated:(BOOL)flag completion:(void (^)(void))completion
 {
     [super dismissViewControllerAnimated:flag completion:^{
