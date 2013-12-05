@@ -13,6 +13,42 @@
 
 @implementation FCOverlay
 
++ (void)presentOverlayWithViewController:(UIViewController *)controller
+                                animated:(BOOL)animated
+                              completion:(void (^)())completion
+{
+    [self presentOverlayWithViewController:controller
+                               windowLevel:UIWindowLevelNormal
+                                  animated:animated
+                                completion:completion];
+}
+
++ (void)presentOverlayWithViewController:(UIViewController *)controller
+                             windowLevel:(UIWindowLevel)windowLevel
+                                animated:(BOOL)animated
+                              completion:(void (^)())completion
+{
+    // get a ptr to the old window
+    UIWindow *oldWindow = [UIApplication sharedApplication].keyWindow;
+    // the new window frame is set to mainScreen bounds
+    CGRect windowFrame = [UIScreen mainScreen].bounds;
+    // create a new window
+    UIWindow *newWindow = [[UIWindow alloc] initWithFrame:windowFrame];
+    
+    // create in-between view controller to present the overlaid view controller
+    FCOverlayViewController *overlayController = [[FCOverlayViewController alloc] initWithOldWindow:oldWindow
+                                                                                          newWindow:newWindow
+                                                                                     viewController:controller
+                                                                                           animated:animated
+                                                                                         completion:completion];
+    
+    // set new window properties and make key and visible
+    newWindow.backgroundColor = [UIColor clearColor];
+    newWindow.rootViewController = overlayController;
+    newWindow.windowLevel = windowLevel;
+    [newWindow makeKeyAndVisible];
+}
+
 + (void)dismissOverlayAnimated:(BOOL)animated completion:(void (^)())completion
 {
     UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
@@ -35,40 +71,6 @@
             break;
         }
     }
-}
-
-+ (void)presentOverlayWithViewController:(UIViewController *)controller
-                                animated:(BOOL)animated
-                              completion:(void (^)())completion
-{
-    [self presentOverlayWithViewController:controller
-                               windowLevel:UIWindowLevelNormal
-                                  animated:animated
-                                completion:completion];
-}
-
-+ (void)presentOverlayWithViewController:(UIViewController *)controller
-                             windowLevel:(UIWindowLevel)windowLevel
-                                animated:(BOOL)animated
-                              completion:(void (^)())completion
-{
-    // set up new window with frame of current window
-    UIWindow *oldWindow = [UIApplication sharedApplication].keyWindow;
-    CGRect windowFrame = oldWindow.frame;
-    UIWindow *newWindow = [[UIWindow alloc] initWithFrame:windowFrame];
-    
-    // create in-between view controller to present the overlaid view controller
-    FCOverlayViewController *overlayController = [[FCOverlayViewController alloc] initWithOldWindow:oldWindow
-                                                                                          newWindow:newWindow
-                                                                                     viewController:controller
-                                                                                           animated:animated
-                                                                                         completion:completion];
-    
-    // set new window properties and make key and visible
-    newWindow.backgroundColor = [UIColor clearColor];
-    newWindow.rootViewController = overlayController;
-    newWindow.windowLevel = windowLevel;
-    [newWindow makeKeyAndVisible];
 }
 
 @end
