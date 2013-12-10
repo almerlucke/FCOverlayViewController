@@ -25,9 +25,9 @@
 /**
  *  Present a view controller in a new window (UIWindowLevelNormal)
  *
- *  @param controller
- *  @param animated
- *  @param completion
+ *  @param controller the view controller to present
+ *  @param animated show animated or not
+ *  @param completion completion block called when finished presenting
  */
 + (void)presentOverlayWithViewController:(UIViewController *)controller
                                 animated:(BOOL)animated
@@ -36,10 +36,10 @@
 /**
  *  Present a view controller in a new window with a specific window level
  *
- *  @param controller
- *  @param windowLevel
- *  @param animated
- *  @param completion
+ *  @param controller the view controller to present
+ *  @param windowLevel the window level for the presented controller
+ *  @param animated show animated or not
+ *  @param completion completion block called when finished presenting
  */
 + (void)presentOverlayWithViewController:(UIViewController *)controller
                              windowLevel:(UIWindowLevel)windowLevel
@@ -51,8 +51,8 @@
  *  calling dismissViewControllerAnimated on the presentingViewController of 
  *  the presented overlayed view controller
  *
- *  @param animated
- *  @param completion
+ *  @param animated dismiss animated or not
+ *  @param completion completion block called when finished dismissing
  */
 + (void)dismissOverlayAnimated:(BOOL)animated completion:(void (^)())completion;
 
