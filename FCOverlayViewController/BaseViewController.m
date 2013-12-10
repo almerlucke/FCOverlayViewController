@@ -9,6 +9,8 @@
 #import "BaseViewController.h"
 #import "FCOverlay.h"
 #import "ExampleViewController.h"
+#import "AlertViewController.h"
+
 
 @interface BaseViewController ()
 @end
@@ -22,6 +24,18 @@
     [FCOverlay presentOverlayWithViewController:exampleController
                                     windowLevel:UIWindowLevelNormal
                                        animated:YES
+                                     completion:nil];
+}
+
+- (IBAction)showAlert:(id)sender
+{
+    AlertViewController *alertController = [[AlertViewController alloc] init];
+    
+    alertController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    
+    [FCOverlay presentOverlayWithViewController:alertController
+                                    windowLevel:UIWindowLevelAlert
+                                       animated:NO
                                      completion:nil];
 }
 

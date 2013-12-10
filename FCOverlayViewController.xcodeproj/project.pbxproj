@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB2A9832185793C8009485CA /* AlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2A9831185793C8009485CA /* AlertViewController.m */; };
+		CB2A983418579522009485CA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB2A983318579522009485CA /* QuartzCore.framework */; };
 		CB2C529B182FC298009D63C1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB2C529A182FC298009D63C1 /* Foundation.framework */; };
 		CB2C529D182FC298009D63C1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB2C529C182FC298009D63C1 /* CoreGraphics.framework */; };
 		CB2C529F182FC298009D63C1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB2C529E182FC298009D63C1 /* UIKit.framework */; };
@@ -37,6 +39,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CB2A9830185793C8009485CA /* AlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertViewController.h; sourceTree = "<group>"; };
+		CB2A9831185793C8009485CA /* AlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertViewController.m; sourceTree = "<group>"; };
+		CB2A983318579522009485CA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		CB2C5297182FC298009D63C1 /* FCOverlayViewController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FCOverlayViewController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB2C529A182FC298009D63C1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CB2C529C182FC298009D63C1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -69,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB2A983418579522009485CA /* QuartzCore.framework in Frameworks */,
 				CB2C529D182FC298009D63C1 /* CoreGraphics.framework in Frameworks */,
 				CB2C529F182FC298009D63C1 /* UIKit.framework in Frameworks */,
 				CB2C529B182FC298009D63C1 /* Foundation.framework in Frameworks */,
@@ -110,6 +116,7 @@
 		CB2C5299182FC298009D63C1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CB2A983318579522009485CA /* QuartzCore.framework */,
 				CB2C529A182FC298009D63C1 /* Foundation.framework */,
 				CB2C529C182FC298009D63C1 /* CoreGraphics.framework */,
 				CB2C529E182FC298009D63C1 /* UIKit.framework */,
@@ -124,6 +131,8 @@
 				CB67DEFC184FDB6200512CC8 /* FCOverlayViewControllerClass */,
 				CB2C52D2182FC386009D63C1 /* ExampleViewController.h */,
 				CB2C52D3182FC386009D63C1 /* ExampleViewController.m */,
+				CB2A9830185793C8009485CA /* AlertViewController.h */,
+				CB2A9831185793C8009485CA /* AlertViewController.m */,
 				CB2C52D5182FC45B009D63C1 /* BaseViewController.h */,
 				CB2C52D6182FC45B009D63C1 /* BaseViewController.m */,
 				CB2C52A9182FC298009D63C1 /* AppDelegate.h */,
@@ -275,6 +284,7 @@
 			files = (
 				CB2C52D4182FC386009D63C1 /* ExampleViewController.m in Sources */,
 				CB67DEFF184FDB8600512CC8 /* FCOverlayViewController.m in Sources */,
+				CB2A9832185793C8009485CA /* AlertViewController.m in Sources */,
 				CB2C52D7182FC45B009D63C1 /* BaseViewController.m in Sources */,
 				CB2C52AB182FC298009D63C1 /* AppDelegate.m in Sources */,
 				CB2C52A7182FC298009D63C1 /* main.m in Sources */,
