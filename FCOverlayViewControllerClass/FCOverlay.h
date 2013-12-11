@@ -14,12 +14,19 @@
  *  outside the current view controller chain. The window level can be set, default is UIWindowLevelNormal.
  *
  *  You can also use the queueOverlayWithViewController methods to make sure one overlay at a time is presented.
- *  When the current overlay is dismissed it will dequeue the next one from the queue. This can be used in alert
- *  type overlays.
+ *  When the current overlay is dismissed it will dequeue the next one from the queue. This can be used to mimic
+ *  alert view behaviour (where the next is presented after the first is dismissed).
  *
- *  A single overlay can be dismissed from the presented view controller with
+ *  An overlay can be dismissed from the presented view controller with
  *  [self.presentingViewController dismissViewControllerAnimated:animated completion:completion] or with a call to
- *  [FCOverlayViewController dismissOverlayAnimated:animated completion:completion].
+ *  [FCOverlay dismissOverlayAnimated:animated completion:completion]. The FCOverlay class method will find the top
+ *  overlay and dismiss it.
+ *
+ *  For some reason calling [self dismissViewControllerAnimated:animated completion:completion] from the presented
+ *  view controller does not work as expected. You would expect that the dismissViewControllerAnimated method of
+ *  FCOverlayViewController (it overrides the superclass implementation) is called, but in reality the super method is 
+ *  called bypassing the FCOverlayViewController override. I think this is a bug on the side of Apple, but maybe 
+ *  I'm doing something wrong?
  *
  *  The two class methods to dismiss the overlay(s) are convenience methods so the overlay(s) can be dismissed from
  *  any part of the application.
