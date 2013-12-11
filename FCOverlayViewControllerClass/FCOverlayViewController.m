@@ -89,11 +89,6 @@
 
 #pragma mark - Show/Hide Overlay
 
-- (void)dismissModalViewControllerAnimated:(BOOL)animated
-{
-    
-}
-
 // Overwrite dismissViewControllerAnimated to be able to close the current window and
 // restore the old window. View controllers that are overlayed should call
 // [self.presentingViewController dismissViewControllerAnimated:flag completion:completion] to

@@ -10,16 +10,27 @@
 #import "FCOverlay.h"
 #import "ExampleViewController.h"
 #import "AlertViewController.h"
+#import "ExampleTransitioningDelegate.h"
 
 
 @interface BaseViewController ()
+@property (nonatomic, strong) ExampleTransitioningDelegate *transitioningDelegate;
 @end
 
 @implementation BaseViewController
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    self.transitioningDelegate = [ExampleTransitioningDelegate new];
+}
+
 - (IBAction)showOverlay:(id)sender
 {
     ExampleViewController *exampleController = [[ExampleViewController alloc] init];
+    
+    exampleController.transitioningDelegate = self.transitioningDelegate;
     
     [FCOverlay presentOverlayWithViewController:exampleController
                                     windowLevel:UIWindowLevelNormal
@@ -38,5 +49,7 @@
                                        animated:NO
                                      completion:nil];
 }
+
+
 
 @end

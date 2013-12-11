@@ -26,6 +26,9 @@
 		CB2C52D7182FC45B009D63C1 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2C52D6182FC45B009D63C1 /* BaseViewController.m */; };
 		CB3CC79E184FEC0A00C6CAF2 /* FCOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3CC79D184FEC0A00C6CAF2 /* FCOverlay.m */; };
 		CB67DEFF184FDB8600512CC8 /* FCOverlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB67DEFE184FDB8600512CC8 /* FCOverlayViewController.m */; };
+		CBBB29241858ACDD00AAF200 /* todo in Resources */ = {isa = PBXBuildFile; fileRef = CBBB29231858ACDD00AAF200 /* todo */; };
+		CBBB29271858B16200AAF200 /* ExampleTransitioningDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CBBB29261858B16200AAF200 /* ExampleTransitioningDelegate.m */; };
+		CBBB292A1858B1CD00AAF200 /* ExampleTransitioning.m in Sources */ = {isa = PBXBuildFile; fileRef = CBBB29291858B1CD00AAF200 /* ExampleTransitioning.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +70,11 @@
 		CB3CC79D184FEC0A00C6CAF2 /* FCOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCOverlay.m; sourceTree = "<group>"; };
 		CB67DEFD184FDB8600512CC8 /* FCOverlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCOverlayViewController.h; sourceTree = "<group>"; };
 		CB67DEFE184FDB8600512CC8 /* FCOverlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCOverlayViewController.m; sourceTree = "<group>"; };
+		CBBB29231858ACDD00AAF200 /* todo */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = todo; sourceTree = "<group>"; };
+		CBBB29251858B16200AAF200 /* ExampleTransitioningDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExampleTransitioningDelegate.h; sourceTree = "<group>"; };
+		CBBB29261858B16200AAF200 /* ExampleTransitioningDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExampleTransitioningDelegate.m; sourceTree = "<group>"; };
+		CBBB29281858B1CD00AAF200 /* ExampleTransitioning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExampleTransitioning.h; sourceTree = "<group>"; };
+		CBBB29291858B1CD00AAF200 /* ExampleTransitioning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExampleTransitioning.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +141,10 @@
 				CB2C52D3182FC386009D63C1 /* ExampleViewController.m */,
 				CB2A9830185793C8009485CA /* AlertViewController.h */,
 				CB2A9831185793C8009485CA /* AlertViewController.m */,
+				CBBB29251858B16200AAF200 /* ExampleTransitioningDelegate.h */,
+				CBBB29261858B16200AAF200 /* ExampleTransitioningDelegate.m */,
+				CBBB29281858B1CD00AAF200 /* ExampleTransitioning.h */,
+				CBBB29291858B1CD00AAF200 /* ExampleTransitioning.m */,
 				CB2C52D5182FC45B009D63C1 /* BaseViewController.h */,
 				CB2C52D6182FC45B009D63C1 /* BaseViewController.m */,
 				CB2C52A9182FC298009D63C1 /* AppDelegate.h */,
@@ -151,6 +163,7 @@
 				CB2C52A3182FC298009D63C1 /* InfoPlist.strings */,
 				CB2C52A6182FC298009D63C1 /* main.m */,
 				CB2C52A8182FC298009D63C1 /* FCOverlayViewController-Prefix.pch */,
+				CBBB29231858ACDD00AAF200 /* todo */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -263,6 +276,7 @@
 			files = (
 				CB2C52B3182FC298009D63C1 /* Images.xcassets in Resources */,
 				CB2C52A5182FC298009D63C1 /* InfoPlist.strings in Resources */,
+				CBBB29241858ACDD00AAF200 /* todo in Resources */,
 				CB2C52AE182FC298009D63C1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -282,7 +296,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBBB292A1858B1CD00AAF200 /* ExampleTransitioning.m in Sources */,
 				CB2C52D4182FC386009D63C1 /* ExampleViewController.m in Sources */,
+				CBBB29271858B16200AAF200 /* ExampleTransitioningDelegate.m in Sources */,
 				CB67DEFF184FDB8600512CC8 /* FCOverlayViewController.m in Sources */,
 				CB2A9832185793C8009485CA /* AlertViewController.m in Sources */,
 				CB2C52D7182FC45B009D63C1 /* BaseViewController.m in Sources */,
