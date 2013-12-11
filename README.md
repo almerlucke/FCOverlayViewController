@@ -31,7 +31,7 @@ present a view controller (with custom transitioning if you like).
                                        animated:YES
                                      completion:nil];
                                      
-If you want to present view controllers on at a time you can also use the 
+If you want to present view controllers one at a time you can also use the 
 queueOverlayWithViewController class methods.
 
     AlertViewController *alertController = [[AlertViewController alloc] init];
