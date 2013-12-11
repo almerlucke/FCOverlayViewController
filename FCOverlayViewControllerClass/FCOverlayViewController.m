@@ -7,6 +7,7 @@
 
 
 #import "FCOverlayViewController.h"
+#import "FCOverlay.h"
 
 
 // private interface
@@ -16,6 +17,7 @@
 @property (nonatomic, strong) UIViewController *viewControllerToPresent;
 @property (nonatomic) BOOL showAnimated;
 @property (nonatomic, copy) void (^completionBlock)();
+@property (nonatomic) BOOL queued;
 @end
 
 
@@ -27,6 +29,7 @@
                         newWindow:(UIWindow *)newWindow
                    viewController:(UIViewController *)viewController
                          animated:(BOOL)animated
+                           queued:(BOOL)queued
                        completion:(void (^)(void))completion {
     if ((self = [super init])) {
         self.oldWindow = oldWindow;
@@ -34,6 +37,7 @@
         self.viewControllerToPresent = viewController;
         self.showAnimated = animated;
         self.completionBlock = completion;
+        self.queued = queued;
     }
     
     return self;
@@ -102,6 +106,11 @@
         // break retain cycle by setting ptr's to nil
         self.oldWindow = nil;
         self.currentWindow.rootViewController = nil;
+        
+        if (self.queued) {
+            // dequeue the next queued overlay
+            [FCOverlay dequeue];
+        }
         
         // call completion block
         if (completion) completion();

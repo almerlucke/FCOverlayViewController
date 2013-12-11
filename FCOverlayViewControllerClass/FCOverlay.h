@@ -13,6 +13,10 @@
  *  Use one of the presentOverlayWithViewController methods to present a view controller in a new window
  *  outside the current view controller chain. The window level can be set, default is UIWindowLevelNormal.
  *
+ *  You can also use the queueOverlayWithViewController methods to make sure one overlay at a time is presented.
+ *  When the current overlay is dismissed it will dequeue the next one from the queue. This can be used in alert
+ *  type overlays.
+ *
  *  A single overlay can be dismissed from the presented view controller with
  *  [self.presentingViewController dismissViewControllerAnimated:animated completion:completion] or with a call to
  *  [FCOverlayViewController dismissOverlayAnimated:animated completion:completion].
@@ -21,6 +25,40 @@
  *  any part of the application.
  */
 @interface FCOverlay : NSObject
+
+/**
+ *  Queue an overlay to be presented. If the queue is empty, present it immediately,
+ *  otherwise put it in the queue for later presentation. Overlays which are queued
+ *  are fetched fifo style from the queue when the currently presented overlay is dismissed
+ *
+ *  @param controller the view controller to present
+ *  @param animated   show animated or not
+ *  @param completion completion block called when finished presenting
+ */
++ (void)queueOverlayWithViewController:(UIViewController *)controller
+                              animated:(BOOL)animated
+                            completion:(void (^)())completion;
+
+/**
+ *  Queue an overlay to be presented with a specific window level. If the queue is empty, present it immediately,
+ *  otherwise put it in the queue for later presentation. Overlays which are queued
+ *  are fetched fifo style from the queue when the currently presented overlay is dismissed
+ *
+ *  @param controller the view controller to present
+ *  @param windowLevel the window level for the presented controller
+ *  @param animated   show animated or not
+ *  @param completion completion block called when finished presenting
+ */
++ (void)queueOverlayWithViewController:(UIViewController *)controller
+                           windowLevel:(UIWindowLevel)windowLevel
+                              animated:(BOOL)animated
+                            completion:(void (^)())completion;
+
+/**
+ *  Called from FCOverlayViewController when it has been dismissed. This method fetches and 
+ *  presents the next overlay in the queue. You should not call this method directly!
+ */
++ (void)dequeue;
 
 /**
  *  Present a view controller in a new window (UIWindowLevelNormal)

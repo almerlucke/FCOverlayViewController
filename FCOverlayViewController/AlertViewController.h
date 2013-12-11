@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface AlertViewController : UIViewController
-
+@property (nonatomic, copy) NSString *alertTitleString;
+@property (nonatomic, copy) NSString *alertMessageString;
 @end

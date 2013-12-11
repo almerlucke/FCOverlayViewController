@@ -110,6 +110,21 @@
 }
 
 
+#pragma mark - Properties
+
+- (void)setAlertTitleString:(NSString *)alertTitleString
+{
+    _alertTitleString = alertTitleString;
+    self.alertTitle.text = alertTitleString;
+}
+
+- (void)setAlertMessageString:(NSString *)alertMessageString
+{
+    _alertMessageString = alertMessageString;
+    self.alertMessage.text = alertMessageString;
+}
+
+
 #pragma mark - Actions
 
 - (void)dismissButtonClicked

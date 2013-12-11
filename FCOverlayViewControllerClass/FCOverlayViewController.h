@@ -24,6 +24,7 @@
  *  @param newWindow      the new key and visible window
  *  @param viewController the view controller to be presented
  *  @param animated       animate the presentation or not
+ *  @param queued         was queued or not
  *  @param completion     called when the presentation is finished
  *
  *  @return In-between FCOverlayViewController instance
@@ -32,6 +33,7 @@
                         newWindow:(UIWindow *)newWindow
                    viewController:(UIViewController *)viewController
                          animated:(BOOL)animated
+                           queued:(BOOL)queued
                        completion:(void (^)(void))completion;
 
 @end
