@@ -13,7 +13,50 @@ present and dismiss any kind of view controller on top of all others from everyw
 your code.
 
 FCOverlay allows you to present this to the user as if it is just a "normal" controller
-transition.
+transition. The example code shows how to use iOS 7 custom transitions, present on
+different window levels (above or below the status bar), and to present alert type
+view controllers. 
 
-# Usage
+### Usage
+
+You can use the FCOverlay presentOverlayWithViewController class methods to immediately 
+present a view controller (with custom transitioning if you like).
+
+    ExampleViewController *exampleController = [[ExampleViewController alloc] init];
+    
+    exampleController.transitioningDelegate = self.transitioningDelegate;
+    
+    [FCOverlay presentOverlayWithViewController:exampleController
+                                    windowLevel:UIWindowLevelNormal
+                                       animated:YES
+                                     completion:nil];
+                                     
+If you want to present view controllers on at a time you can also use the 
+queueOverlayWithViewController class methods.
+
+    AlertViewController *alertController = [[AlertViewController alloc] init];
+    
+    alertController.alertTitleString = @"This is the first queued alert";
+    alertController.alertMessageString = @"After this alert will follow a new alert, alertception style!";
+    alertController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    
+     // queue the first alert
+    [FCOverlay queueOverlayWithViewController:alertController
+                                  windowLevel:UIWindowLevelAlert
+                                     animated:NO
+                                   completion:nil];
+    
+    // queue the second alert
+    alertController = [[AlertViewController alloc] init];
+    
+    alertController.alertTitleString = @"This is the second queued alert";
+    alertController.alertMessageString = @"After this alert there will be no more alerts in the queue!";
+    alertController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    
+    [FCOverlay queueOverlayWithViewController:alertController
+                                  windowLevel:UIWindowLevelAlert
+                                     animated:NO
+                                   completion:nil];
+                                     
+
 
