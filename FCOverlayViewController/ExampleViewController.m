@@ -6,8 +6,10 @@
 //  Copyright (c) 2013 Farcoding. All rights reserved.
 //
 
+
 #import "ExampleViewController.h"
 #import "FCOverlay.h"
+
 
 @interface ExampleViewController ()
 @property (nonatomic, strong) UIButton *dismissButton;
@@ -15,6 +17,7 @@
 @property (nonatomic, strong) UIButton *hideOneButton;
 @property (nonatomic, strong) UIButton *hideAllButton;
 @end
+
 
 @implementation ExampleViewController
 
@@ -71,27 +74,6 @@
     frame.origin.x = floor((size.width - frame.size.width) / 2);
     frame.origin.y = floor((size.height - frame.size.height) / 2) + 40;
     self.hideAllButton.frame = frame;
-}
-
-- (BOOL)shouldAutorotate
-{
-    // forward call to presented view controller
-    return YES;
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
-{
-//    return UIInterfaceOrientationIsPortrait(toInterfaceOrientation);
-    
-    return YES;
-}
-
-- (NSUInteger)supportedInterfaceOrientations
-{
-//    UIInterfaceOrientationMask mask = UIInterfaceOrientationMaskPortrait;
-    UIInterfaceOrientationMask mask = UIInterfaceOrientationMaskAll;
-    
-    return mask;
 }
 
 - (void)hideMe

@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Farcoding. All rights reserved.
 //
 
+
 #import "BaseViewController.h"
 #import "FCOverlay.h"
 #import "ExampleViewController.h"
@@ -16,6 +17,7 @@
 @interface BaseViewController ()
 @property (nonatomic, strong) ExampleTransitioningDelegate *transitioningDelegate;
 @end
+
 
 @implementation BaseViewController
 
@@ -78,7 +80,5 @@
                                      animated:NO
                                    completion:nil];
 }
-
-
 
 @end
