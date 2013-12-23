@@ -16,6 +16,10 @@
 
 @interface BaseViewController ()
 @property (nonatomic, strong) ExampleTransitioningDelegate *transitioningDelegate;
+@property (nonatomic, strong) UIImageView *catImageView;
+@property (nonatomic, strong) UIButton *button1;
+@property (nonatomic, strong) UIButton *button2;
+@property (nonatomic, strong) UIButton *button3;
 @end
 
 
@@ -26,6 +30,21 @@
     [super viewDidLoad];
     
     self.transitioningDelegate = [ExampleTransitioningDelegate new];
+    
+    self.catImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cat2"]];
+    [self.view addSubview:self.catImageView];
+    
+    self.button1 = [UIButton buttonWithType:UIButtonTypeCustom];
+}
+
+- (void)viewWillLayoutSubviews
+{
+    [super viewWillLayoutSubviews];
+    
+    CGSize size = self.view.bounds.size;
+    CGRect frame = self.catImageView.frame;
+    frame.origin.x = floor((size.width - frame.size.width) / 2);
+    frame.origin.y = floor((size.height - frame.size.height) / 2);
 }
 
 - (IBAction)showOverlay:(id)sender

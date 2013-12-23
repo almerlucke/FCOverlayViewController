@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB16B7401868B8A300CBC4F6 /* cat.png in Resources */ = {isa = PBXBuildFile; fileRef = CB16B73E1868B8A300CBC4F6 /* cat.png */; };
+		CB16B7411868B8A300CBC4F6 /* cat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CB16B73F1868B8A300CBC4F6 /* cat@2x.png */; };
+		CB16B7441868BB0C00CBC4F6 /* cat2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CB16B7421868BB0C00CBC4F6 /* cat2@2x.png */; };
+		CB16B7451868BB0C00CBC4F6 /* cat2.png in Resources */ = {isa = PBXBuildFile; fileRef = CB16B7431868BB0C00CBC4F6 /* cat2.png */; };
 		CB2A9832185793C8009485CA /* AlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB2A9831185793C8009485CA /* AlertViewController.m */; };
 		CB2A983418579522009485CA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB2A983318579522009485CA /* QuartzCore.framework */; };
 		CB2C529B182FC298009D63C1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB2C529A182FC298009D63C1 /* Foundation.framework */; };
@@ -29,6 +33,9 @@
 		CBBB29241858ACDD00AAF200 /* todo in Resources */ = {isa = PBXBuildFile; fileRef = CBBB29231858ACDD00AAF200 /* todo */; };
 		CBBB29271858B16200AAF200 /* ExampleTransitioningDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CBBB29261858B16200AAF200 /* ExampleTransitioningDelegate.m */; };
 		CBBB292A1858B1CD00AAF200 /* ExampleTransitioning.m in Sources */ = {isa = PBXBuildFile; fileRef = CBBB29291858B1CD00AAF200 /* ExampleTransitioning.m */; };
+		CBF0A38C185A45DC00BBDFCB /* TutorialArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CBF0A38A185A45DC00BBDFCB /* TutorialArrow@2x.png */; };
+		CBF0A38D185A45DC00BBDFCB /* TutorialArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = CBF0A38B185A45DC00BBDFCB /* TutorialArrow.png */; };
+		CBF0A390185A460400BBDFCB /* TutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF0A38F185A460300BBDFCB /* TutorialViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +49,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CB16B73E1868B8A300CBC4F6 /* cat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cat.png; sourceTree = "<group>"; };
+		CB16B73F1868B8A300CBC4F6 /* cat@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cat@2x.png"; sourceTree = "<group>"; };
+		CB16B7421868BB0C00CBC4F6 /* cat2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cat2@2x.png"; sourceTree = "<group>"; };
+		CB16B7431868BB0C00CBC4F6 /* cat2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cat2.png; sourceTree = "<group>"; };
 		CB2A9830185793C8009485CA /* AlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertViewController.h; sourceTree = "<group>"; };
 		CB2A9831185793C8009485CA /* AlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertViewController.m; sourceTree = "<group>"; };
 		CB2A983318579522009485CA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -75,6 +86,10 @@
 		CBBB29261858B16200AAF200 /* ExampleTransitioningDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExampleTransitioningDelegate.m; sourceTree = "<group>"; };
 		CBBB29281858B1CD00AAF200 /* ExampleTransitioning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExampleTransitioning.h; sourceTree = "<group>"; };
 		CBBB29291858B1CD00AAF200 /* ExampleTransitioning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExampleTransitioning.m; sourceTree = "<group>"; };
+		CBF0A38A185A45DC00BBDFCB /* TutorialArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TutorialArrow@2x.png"; sourceTree = "<group>"; };
+		CBF0A38B185A45DC00BBDFCB /* TutorialArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TutorialArrow.png; sourceTree = "<group>"; };
+		CBF0A38E185A460300BBDFCB /* TutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialViewController.h; sourceTree = "<group>"; };
+		CBF0A38F185A460300BBDFCB /* TutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +154,8 @@
 				CB67DEFC184FDB6200512CC8 /* FCOverlayViewControllerClass */,
 				CB2C52D2182FC386009D63C1 /* ExampleViewController.h */,
 				CB2C52D3182FC386009D63C1 /* ExampleViewController.m */,
+				CBF0A38E185A460300BBDFCB /* TutorialViewController.h */,
+				CBF0A38F185A460300BBDFCB /* TutorialViewController.m */,
 				CB2A9830185793C8009485CA /* AlertViewController.h */,
 				CB2A9831185793C8009485CA /* AlertViewController.m */,
 				CBBB29251858B16200AAF200 /* ExampleTransitioningDelegate.h */,
@@ -159,6 +176,12 @@
 		CB2C52A1182FC298009D63C1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CB16B7421868BB0C00CBC4F6 /* cat2@2x.png */,
+				CB16B7431868BB0C00CBC4F6 /* cat2.png */,
+				CB16B73E1868B8A300CBC4F6 /* cat.png */,
+				CB16B73F1868B8A300CBC4F6 /* cat@2x.png */,
+				CBF0A38A185A45DC00BBDFCB /* TutorialArrow@2x.png */,
+				CBF0A38B185A45DC00BBDFCB /* TutorialArrow.png */,
 				CB2C52A2182FC298009D63C1 /* FCOverlayViewController-Info.plist */,
 				CB2C52A3182FC298009D63C1 /* InfoPlist.strings */,
 				CB2C52A6182FC298009D63C1 /* main.m */,
@@ -274,10 +297,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB16B7441868BB0C00CBC4F6 /* cat2@2x.png in Resources */,
+				CB16B7451868BB0C00CBC4F6 /* cat2.png in Resources */,
 				CB2C52B3182FC298009D63C1 /* Images.xcassets in Resources */,
+				CBF0A38D185A45DC00BBDFCB /* TutorialArrow.png in Resources */,
 				CB2C52A5182FC298009D63C1 /* InfoPlist.strings in Resources */,
 				CBBB29241858ACDD00AAF200 /* todo in Resources */,
 				CB2C52AE182FC298009D63C1 /* Main.storyboard in Resources */,
+				CB16B7401868B8A300CBC4F6 /* cat.png in Resources */,
+				CBF0A38C185A45DC00BBDFCB /* TutorialArrow@2x.png in Resources */,
+				CB16B7411868B8A300CBC4F6 /* cat@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,6 +329,7 @@
 				CB2C52D4182FC386009D63C1 /* ExampleViewController.m in Sources */,
 				CBBB29271858B16200AAF200 /* ExampleTransitioningDelegate.m in Sources */,
 				CB67DEFF184FDB8600512CC8 /* FCOverlayViewController.m in Sources */,
+				CBF0A390185A460400BBDFCB /* TutorialViewController.m in Sources */,
 				CB2A9832185793C8009485CA /* AlertViewController.m in Sources */,
 				CB2C52D7182FC45B009D63C1 /* BaseViewController.m in Sources */,
 				CB2C52AB182FC298009D63C1 /* AppDelegate.m in Sources */,

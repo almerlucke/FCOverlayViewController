@@ -16,6 +16,7 @@
 @property (nonatomic, strong) UIButton *createNewButton;
 @property (nonatomic, strong) UIButton *hideOneButton;
 @property (nonatomic, strong) UIButton *hideAllButton;
+@property (nonatomic, strong) UIImageView *catImageView;
 @end
 
 
@@ -25,24 +26,35 @@
 {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor colorWithRed:1 green:0 blue:0 alpha:1];
+    self.view.backgroundColor = [UIColor colorWithRed:0.9 green:0.6 blue:0.6 alpha:1];
+    
+    self.catImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cat"]];
+    [self.view addSubview:self.catImageView];
 	
     self.dismissButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [self.dismissButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    self.dismissButton.titleLabel.font = [UIFont boldSystemFontOfSize:14.0];
     [self.dismissButton setTitle:@"dismiss" forState:UIControlStateNormal];
     [self.dismissButton addTarget:self action:@selector(hideMe) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.dismissButton];
     
     self.createNewButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [self.createNewButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    self.createNewButton.titleLabel.font = [UIFont boldSystemFontOfSize:14.0];
     [self.createNewButton setTitle:@"create new" forState:UIControlStateNormal];
     [self.createNewButton addTarget:self action:@selector(createNew) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.createNewButton];
     
     self.hideOneButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    self.hideOneButton.titleLabel.font = [UIFont boldSystemFontOfSize:14.0];
+    [self.hideOneButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.hideOneButton setTitle:@"hide one" forState:UIControlStateNormal];
     [self.hideOneButton addTarget:self action:@selector(hideOne) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.hideOneButton];
     
     self.hideAllButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [self.hideAllButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    self.hideAllButton.titleLabel.font = [UIFont boldSystemFontOfSize:14.0];
     [self.hideAllButton setTitle:@"hide all" forState:UIControlStateNormal];
     [self.hideAllButton addTarget:self action:@selector(hideAll) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.hideAllButton];
@@ -54,6 +66,11 @@
     
     CGSize size = self.view.bounds.size;
     CGRect frame;
+    
+    frame = self.catImageView.frame;
+    frame.origin.x = floor((size.width - frame.size.width) / 2);
+    frame.origin.y = floor((size.height - frame.size.height) / 2);
+    self.catImageView.frame = frame;
     
     frame.size = CGSizeMake(100, 30);
     frame.origin.x = floor((size.width - frame.size.width) / 2);
