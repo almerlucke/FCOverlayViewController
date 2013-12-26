@@ -17,6 +17,12 @@ transition. The example code shows how to use iOS 7 custom transitions, present 
 different window levels (above or below the status bar), and to present alert type
 view controllers. 
 
+### Installation
+
+The easiest way is to use CocoaPods. If you don't already, here's a [guide](http://guides.cocoapods.org/using/getting-started.html).
+
+	pod 'VENSnowOverlayView', '~>0.1.0'
+
 ### Usage
 
 You can use the FCOverlay presentOverlayWithViewController class methods to immediately 
