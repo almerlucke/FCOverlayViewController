@@ -63,6 +63,8 @@ queueOverlayWithViewController class methods.
                                   windowLevel:UIWindowLevelAlert
                                      animated:NO
                                    completion:nil];
+                                   
+![alert screenshot](alert_overlay.png?raw=true)
                                      
 
 
