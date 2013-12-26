@@ -21,7 +21,7 @@ view controllers.
 
 The easiest way is to use CocoaPods. If you don't already, here's a [guide](http://guides.cocoapods.org/using/getting-started.html).
 
-	pod 'VENSnowOverlayView', '~>0.1.0'
+	pod 'FCOverlay', '~>1.0.0'
 
 ### Usage
 
