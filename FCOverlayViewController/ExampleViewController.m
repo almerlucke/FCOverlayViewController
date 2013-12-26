@@ -33,29 +33,37 @@
 	
     self.dismissButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [self.dismissButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    self.dismissButton.titleLabel.font = [UIFont boldSystemFontOfSize:14.0];
-    [self.dismissButton setTitle:@"dismiss" forState:UIControlStateNormal];
+    self.dismissButton.titleLabel.font = [UIFont boldSystemFontOfSize:16.0];
+    [self.dismissButton setTitleShadowColor:[UIColor blackColor] forState:UIControlStateNormal];
+    self.dismissButton.titleLabel.shadowOffset = CGSizeMake(1, 1);
+    [self.dismissButton setTitle:@"Dismiss" forState:UIControlStateNormal];
     [self.dismissButton addTarget:self action:@selector(hideMe) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.dismissButton];
     
     self.createNewButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [self.createNewButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    self.createNewButton.titleLabel.font = [UIFont boldSystemFontOfSize:14.0];
-    [self.createNewButton setTitle:@"create new" forState:UIControlStateNormal];
+    self.createNewButton.titleLabel.font = [UIFont boldSystemFontOfSize:16.0];
+    [self.createNewButton setTitleShadowColor:[UIColor blackColor] forState:UIControlStateNormal];
+    self.createNewButton.titleLabel.shadowOffset = CGSizeMake(1, 1);
+    [self.createNewButton setTitle:@"Create new" forState:UIControlStateNormal];
     [self.createNewButton addTarget:self action:@selector(createNew) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.createNewButton];
     
     self.hideOneButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    self.hideOneButton.titleLabel.font = [UIFont boldSystemFontOfSize:14.0];
+    self.hideOneButton.titleLabel.font = [UIFont boldSystemFontOfSize:16.0];
     [self.hideOneButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [self.hideOneButton setTitle:@"hide one" forState:UIControlStateNormal];
+    [self.hideOneButton setTitleShadowColor:[UIColor blackColor] forState:UIControlStateNormal];
+    self.hideOneButton.titleLabel.shadowOffset = CGSizeMake(1, 1);
+    [self.hideOneButton setTitle:@"Hide one" forState:UIControlStateNormal];
     [self.hideOneButton addTarget:self action:@selector(hideOne) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.hideOneButton];
     
     self.hideAllButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [self.hideAllButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    self.hideAllButton.titleLabel.font = [UIFont boldSystemFontOfSize:14.0];
-    [self.hideAllButton setTitle:@"hide all" forState:UIControlStateNormal];
+    self.hideAllButton.titleLabel.font = [UIFont boldSystemFontOfSize:16.0];
+    [self.hideAllButton setTitleShadowColor:[UIColor blackColor] forState:UIControlStateNormal];
+    self.hideAllButton.titleLabel.shadowOffset = CGSizeMake(1, 1);
+    [self.hideAllButton setTitle:@"Hide all" forState:UIControlStateNormal];
     [self.hideAllButton addTarget:self action:@selector(hideAll) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.hideAllButton];
 }

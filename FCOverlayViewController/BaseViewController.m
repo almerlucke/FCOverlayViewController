@@ -31,10 +31,37 @@
     
     self.transitioningDelegate = [ExampleTransitioningDelegate new];
     
+    self.view.backgroundColor = [UIColor colorWithRed:0.9 green:0.6 blue:0.6 alpha:1];
+    
     self.catImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cat2"]];
     [self.view addSubview:self.catImageView];
     
-    self.button1 = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.button1 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [self.button1 setTitle:@"Show overlay with custom transition" forState:UIControlStateNormal];
+    [self.button1 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.button1 setTitleShadowColor:[UIColor blackColor] forState:UIControlStateNormal];
+    self.button1.titleLabel.shadowOffset = CGSizeMake(1, 1);
+    self.button1.titleLabel.font = [UIFont boldSystemFontOfSize:16];
+    [self.button1 addTarget:self action:@selector(showOverlay:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.button1];
+    
+    self.button2 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [self.button2 setTitle:@"Show custom alert" forState:UIControlStateNormal];
+    [self.button2 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.button2 setTitleShadowColor:[UIColor blackColor] forState:UIControlStateNormal];
+    self.button2.titleLabel.shadowOffset = CGSizeMake(1, 1);
+    self.button2.titleLabel.font = [UIFont boldSystemFontOfSize:16];
+    [self.button2 addTarget:self action:@selector(showAlert:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.button2];
+
+    self.button3 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [self.button3 setTitle:@"Show queued alerts" forState:UIControlStateNormal];
+    [self.button3 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.button3 setTitleShadowColor:[UIColor blackColor] forState:UIControlStateNormal];
+    self.button3.titleLabel.shadowOffset = CGSizeMake(1, 1);
+    self.button3.titleLabel.font = [UIFont boldSystemFontOfSize:16];
+    [self.button3 addTarget:self action:@selector(showQueuedAlerts:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.button3];
 }
 
 - (void)viewWillLayoutSubviews
@@ -45,6 +72,28 @@
     CGRect frame = self.catImageView.frame;
     frame.origin.x = floor((size.width - frame.size.width) / 2);
     frame.origin.y = floor((size.height - frame.size.height) / 2);
+    self.catImageView.frame = frame;
+    
+    frame = self.button1.frame;
+    frame.size.width = size.width;
+    frame.size.height = 30;
+    frame.origin.x = 0;
+    frame.origin.y = 60;
+    self.button1.frame = frame;
+    
+    frame = self.button2.frame;
+    frame.size.width = size.width;
+    frame.size.height = 30;
+    frame.origin.x = 0;
+    frame.origin.y = CGRectGetMaxY(self.button1.frame) + 40;
+    self.button2.frame = frame;
+    
+    frame = self.button3.frame;
+    frame.size.width = size.width;
+    frame.size.height = 30;
+    frame.origin.x = 0;
+    frame.origin.y = CGRectGetMaxY(self.button2.frame) + 40;
+    self.button3.frame = frame;
 }
 
 - (IBAction)showOverlay:(id)sender

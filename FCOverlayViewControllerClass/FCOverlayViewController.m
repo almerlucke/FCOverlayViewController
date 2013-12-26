@@ -12,7 +12,6 @@
 
 // private interface
 @interface FCOverlayViewController ()
-@property (nonatomic, strong) UIWindow *oldWindow;
 @property (nonatomic, strong) UIWindow *currentWindow;
 @property (nonatomic, strong) UIViewController *viewControllerToPresent;
 @property (nonatomic) BOOL showAnimated;
@@ -25,15 +24,13 @@
 
 #pragma mark - Initialize, Appearance and Loading
 
-- (instancetype)initWithOldWindow:(UIWindow *)oldWindow
-                        newWindow:(UIWindow *)newWindow
-                   viewController:(UIViewController *)viewController
-                         animated:(BOOL)animated
-                           queued:(BOOL)queued
-                       completion:(void (^)(void))completion {
+- (instancetype)initWithWindow:(UIWindow *)window
+                viewController:(UIViewController *)viewController
+                      animated:(BOOL)animated
+                        queued:(BOOL)queued
+                    completion:(void (^)(void))completion {
     if ((self = [super init])) {
-        self.oldWindow = oldWindow;
-        self.currentWindow = newWindow;
+        self.currentWindow = window;
         self.viewControllerToPresent = viewController;
         self.showAnimated = animated;
         self.completionBlock = completion;
@@ -94,17 +91,48 @@
 #pragma mark - Show/Hide Overlay
 
 // Overwrite dismissViewControllerAnimated to be able to close the current window and
-// restore the old window. View controllers that are overlayed should call
+// make the next window in line the top window. View controllers that are overlayed should call
 // [self.presentingViewController dismissViewControllerAnimated:flag completion:completion] to
 // dismiss the overlay controller and corresponding window
 - (void)dismissViewControllerAnimated:(BOOL)flag completion:(void (^)(void))completion
 {
     [super dismissViewControllerAnimated:flag completion:^{
-        // restore old window
-        [self.oldWindow makeKeyAndVisible];
+        NSArray *windows = [UIApplication sharedApplication].windows;
+        NSEnumerator *reverseEnumerator = [windows reverseObjectEnumerator];
+        NSInteger topIndex = [windows count] - 1;
+        NSInteger index = topIndex;
+        
+        // get current key window
+        UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
+        
+        // if we are the key window, find the next window in the hierarchy that
+        // should be made key
+        if (self.currentWindow == keyWindow) {
+            for (UIWindow *window in reverseEnumerator) {
+                if (window.rootViewController == self) {
+                    break;
+                } else {
+                    --index;
+                }
+            }
+            
+            if (index == topIndex) {
+                // we are the top level window, get the one below us to make key
+                keyWindow = [windows objectAtIndex:index - 1];
+            } else {
+                // we are not the top level window, get the top level window to make key
+                keyWindow = [windows objectAtIndex:topIndex];
+            }
+        }
+        
+        // set window level to normal, this is needed to restore activity for
+        // any _UIModalItemHostingWindow that are below us in the window hierarchy
+        self.currentWindow.windowLevel = UIWindowLevelNormal;
+        
+        // restore key window
+        [keyWindow makeKeyAndVisible];
         
         // break retain cycle by setting ptr's to nil
-        self.oldWindow = nil;
         self.currentWindow.rootViewController = nil;
         
         if (self.queued) {

@@ -20,7 +20,6 @@
 /**
  *  This method should never be called by any other class then the FCOverlay class.
  *
- *  @param oldWindow      the old key and visible window
  *  @param newWindow      the new key and visible window
  *  @param viewController the view controller to be presented
  *  @param animated       animate the presentation or not
@@ -29,11 +28,10 @@
  *
  *  @return In-between FCOverlayViewController instance
  */
-- (instancetype)initWithOldWindow:(UIWindow *)oldWindow
-                        newWindow:(UIWindow *)newWindow
-                   viewController:(UIViewController *)viewController
-                         animated:(BOOL)animated
-                           queued:(BOOL)queued
-                       completion:(void (^)(void))completion;
+- (instancetype)initWithWindow:(UIWindow *)window
+                viewController:(UIViewController *)viewController
+                      animated:(BOOL)animated
+                        queued:(BOOL)queued
+                    completion:(void (^)(void))completion;
 
 @end

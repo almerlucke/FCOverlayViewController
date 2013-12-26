@@ -167,10 +167,7 @@
                                 animated:(BOOL)animated
                                   queued:(BOOL)queued
                               completion:(void (^)())completion
-{
-    // get a ptr to the old window
-    UIWindow *oldWindow = [UIApplication sharedApplication].keyWindow;
-    
+{    
     // the new window frame is set to mainScreen bounds
     CGRect windowFrame = [UIScreen mainScreen].bounds;
     
@@ -178,12 +175,11 @@
     UIWindow *newWindow = [[UIWindow alloc] initWithFrame:windowFrame];
     
     // create in-between view controller to present the overlaid view controller
-    FCOverlayViewController *overlayController = [[FCOverlayViewController alloc] initWithOldWindow:oldWindow
-                                                                                          newWindow:newWindow
-                                                                                     viewController:controller
-                                                                                           animated:animated
-                                                                                             queued:queued
-                                                                                         completion:completion];
+    FCOverlayViewController *overlayController = [[FCOverlayViewController alloc] initWithWindow:newWindow
+                                                                                  viewController:controller
+                                                                                        animated:animated
+                                                                                          queued:queued
+                                                                                      completion:completion];
     
     // set new window properties and make key and visible
     newWindow.backgroundColor = [UIColor clearColor];
@@ -197,11 +193,22 @@
 
 + (void)dismissOverlayAnimated:(BOOL)animated completion:(void (^)())completion
 {
-    UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
+    NSArray *windows = [UIApplication sharedApplication].windows;
+    NSEnumerator *reverseEnumerator = [windows reverseObjectEnumerator];
+    BOOL dismissedOverlay = NO;
     
-    if ([keyWindow.rootViewController isKindOfClass:[FCOverlayViewController class]]) {
-        [keyWindow.rootViewController dismissViewControllerAnimated:animated completion:completion];
-    } else {
+    // dismiss the first overlay we find in the window hierarchy
+    // windows are sorted on window level so the last window in the array
+    // is the one that is shown on top of all other windows
+    for (UIWindow *window in reverseEnumerator) {
+        if ([window.rootViewController isKindOfClass:[FCOverlayViewController class]]) {
+            [window.rootViewController dismissViewControllerAnimated:animated completion:completion];
+            dismissedOverlay = YES;
+            break;
+        }
+    }
+    
+    if (!dismissedOverlay) {
         if (completion) completion();
     }
 }
@@ -211,14 +218,12 @@
     // first empty the queued overlays
     [[self sharedInstance] emptyQueue];
     
-    // loop to dismiss all overlays
-    while (YES) {
-        UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
-        
-        if ([keyWindow.rootViewController isKindOfClass:[FCOverlayViewController class]]) {
-            [keyWindow.rootViewController dismissViewControllerAnimated:NO completion:nil];
-        } else {
-            break;
+    NSArray *windows = [UIApplication sharedApplication].windows;
+    
+    // loop through all active windows and dismiss if they are presented by FCOverlay
+    for (UIWindow *window in windows) {
+        if ([window.rootViewController isKindOfClass:[FCOverlayViewController class]]) {
+            [window.rootViewController dismissViewControllerAnimated:NO completion:nil];
         }
     }
 }
