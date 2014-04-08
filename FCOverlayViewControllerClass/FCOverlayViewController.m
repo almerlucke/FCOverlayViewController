@@ -66,10 +66,14 @@
     }
 }
 
+
+#pragma mark - Status Bar
+
 - (BOOL)prefersStatusBarHidden
 {
     return [self.viewControllerToPresent prefersStatusBarHidden] || [self.presentedViewController prefersStatusBarHidden];
 }
+
 
 #pragma mark - Auto Rotation
 
