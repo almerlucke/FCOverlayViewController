@@ -101,6 +101,11 @@
     self.hideAllButton.frame = frame;
 }
 
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
+
 - (void)hideMe
 {
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
