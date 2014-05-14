@@ -139,6 +139,7 @@
         
         // restore key window
         [keyWindow makeKeyAndVisible];
+        [keyWindow becomeFirstResponder];
         
         // break retain cycle by setting ptr's to nil
         self.currentWindow.rootViewController = nil;
