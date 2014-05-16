@@ -107,8 +107,6 @@
     [super dismissViewControllerAnimated:flag completion:^{
         NSArray *windows = [UIApplication sharedApplication].windows;
         NSEnumerator *reverseEnumerator = [windows reverseObjectEnumerator];
-        NSInteger topIndex = [windows count] - 1;
-        NSInteger index = topIndex;
         
         // get current key window
         UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
@@ -117,19 +115,11 @@
         // should be made key
         if (self.currentWindow == keyWindow) {
             for (UIWindow *window in reverseEnumerator) {
-                if (window.rootViewController == self) {
-                    break;
-                } else {
-                    --index;
+                if (window.rootViewController && window.rootViewController != self) {
+                    keyWindow = window;
                 }
-            }
-            
-            if (index == topIndex) {
-                // we are the top level window, get the one below us to make key
-                keyWindow = [windows objectAtIndex:index - 1];
-            } else {
-                // we are not the top level window, get the top level window to make key
-                keyWindow = [windows objectAtIndex:topIndex];
+                
+                break;
             }
         }
         
