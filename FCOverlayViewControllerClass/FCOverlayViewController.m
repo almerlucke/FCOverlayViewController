@@ -17,6 +17,7 @@
 @property (nonatomic) BOOL showAnimated;
 @property (nonatomic, copy) void (^completionBlock)();
 @property (nonatomic) BOOL queued;
+@property(nonatomic) BOOL shouldDismissWhenReady;
 @end
 
 
@@ -59,7 +60,19 @@
         // present the view controller
         [self presentViewController:self.viewControllerToPresent
                            animated:self.showAnimated
-                         completion:self.completionBlock];
+                         completion:^{
+
+			if(self.completionBlock)
+			{
+				self.completionBlock();
+			}
+			
+			if(self.shouldDismissWhenReady)
+			{
+				[self dismissViewControllerAnimated:NO completion:nil];
+			}
+
+		}];
         
         // make sure we never present the view controller again (for example after it is dismissed)
         self.viewControllerToPresent = nil;
@@ -104,6 +117,12 @@
 // dismiss the overlay controller and corresponding window
 - (void)dismissViewControllerAnimated:(BOOL)flag completion:(void (^)(void))completion
 {
+	if(self.presentedViewController && self.presentedViewController.isBeingPresented)
+	{
+		self.shouldDismissWhenReady = YES;
+		return;
+	}
+
     [super dismissViewControllerAnimated:flag completion:^{
         NSArray *windows = [UIApplication sharedApplication].windows;
         NSEnumerator *reverseEnumerator = [windows reverseObjectEnumerator];
