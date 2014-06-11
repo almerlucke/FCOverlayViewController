@@ -14,10 +14,10 @@
 @interface FCOverlayViewController ()
 @property (nonatomic, strong) UIWindow *currentWindow;
 @property (nonatomic, strong) UIViewController *viewControllerToPresent;
-@property (nonatomic) BOOL showAnimated;
 @property (nonatomic, copy) void (^completionBlock)();
+@property (nonatomic) BOOL showAnimated;
 @property (nonatomic) BOOL queued;
-@property(nonatomic) BOOL shouldDismissWhenReady;
+@property (nonatomic) BOOL shouldDismissWhenReady;
 @end
 
 
@@ -63,13 +63,11 @@
 					animated:self.showAnimated
 					completion:^{
 
-				if (self.completionBlock)
-				{
+				if (self.completionBlock) {
 					self.completionBlock();
 				}
 
-				if (self.shouldDismissWhenReady)
-				{
+				if (self.shouldDismissWhenReady) {
 					[self dismissViewControllerAnimated:NO completion:nil];
 				}
 
@@ -86,32 +84,63 @@
 
 - (BOOL)prefersStatusBarHidden
 {
-    return [self.viewControllerToPresent prefersStatusBarHidden] || [self.presentedViewController prefersStatusBarHidden];
+    UIViewController *viewController = self.viewControllerToPresent;
+    
+    if (!viewController) {
+        viewController = self.presentedViewController;
+    }
+    
+    return [viewController prefersStatusBarHidden];
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
-	return [self.viewControllerToPresent preferredStatusBarStyle];
+    UIViewController *viewController = self.viewControllerToPresent;
+    
+    if (!viewController) {
+        viewController = self.presentedViewController;
+    }
+    
+	return [viewController preferredStatusBarStyle];
 }
+
 
 #pragma mark - Auto Rotation
 
 - (BOOL)shouldAutorotate
 {
+    UIViewController *viewController = self.viewControllerToPresent;
+    
+    if (!viewController) {
+        viewController = self.presentedViewController;
+    }
+    
     // forward call to presented view controller
-    return [self.presentedViewController shouldAutorotate];
+    return [viewController shouldAutorotate];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
 {
+    UIViewController *viewController = self.viewControllerToPresent;
+    
+    if (!viewController) {
+        viewController = self.presentedViewController;
+    }
+    
     // forward call to presented view controller
-    return [self.presentedViewController shouldAutorotateToInterfaceOrientation:toInterfaceOrientation];
+    return [viewController shouldAutorotateToInterfaceOrientation:toInterfaceOrientation];
 }
 
 - (NSUInteger)supportedInterfaceOrientations
 {
+    UIViewController *viewController = self.viewControllerToPresent;
+    
+    if (!viewController) {
+        viewController = self.presentedViewController;
+    }
+    
     // forward call to presented view controller
-    return [self.presentedViewController supportedInterfaceOrientations];
+    return [viewController supportedInterfaceOrientations];
 }
 
 
