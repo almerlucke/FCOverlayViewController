@@ -87,6 +87,10 @@
     return [self.viewControllerToPresent prefersStatusBarHidden] || [self.presentedViewController prefersStatusBarHidden];
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+	return [self.viewControllerToPresent preferredStatusBarStyle];
+}
 
 #pragma mark - Auto Rotation
 
