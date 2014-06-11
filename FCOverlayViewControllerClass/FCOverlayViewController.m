@@ -17,6 +17,7 @@
 @property (nonatomic) BOOL showAnimated;
 @property (nonatomic, copy) void (^completionBlock)();
 @property (nonatomic) BOOL queued;
+@property(nonatomic) BOOL shouldDismissWhenReady;
 @end
 
 
@@ -57,12 +58,26 @@
     
     if (self.viewControllerToPresent) {
         // present the view controller
-        [self presentViewController:self.viewControllerToPresent
-                           animated:self.showAnimated
-                         completion:self.completionBlock];
-        
-        // make sure we never present the view controller again (for example after it is dismissed)
-        self.viewControllerToPresent = nil;
+		dispatch_async(dispatch_get_main_queue(), ^{
+			[self presentViewController:self.viewControllerToPresent
+					animated:self.showAnimated
+					completion:^{
+
+				if (self.completionBlock)
+				{
+					self.completionBlock();
+				}
+
+				if (self.shouldDismissWhenReady)
+				{
+					[self dismissViewControllerAnimated:NO completion:nil];
+				}
+
+			}];
+
+			// make sure we never present the view controller again (for example after it is dismissed)
+			self.viewControllerToPresent = nil;
+		});
     }
 }
 
@@ -74,6 +89,10 @@
     return [self.viewControllerToPresent prefersStatusBarHidden] || [self.presentedViewController prefersStatusBarHidden];
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+	return [self.viewControllerToPresent preferredStatusBarStyle];
+}
 
 #pragma mark - Auto Rotation
 
@@ -104,6 +123,12 @@
 // dismiss the overlay controller and corresponding window
 - (void)dismissViewControllerAnimated:(BOOL)flag completion:(void (^)(void))completion
 {
+	if(self.presentedViewController && self.presentedViewController.isBeingPresented)
+	{
+		self.shouldDismissWhenReady = YES;
+		return;
+	}
+
     [super dismissViewControllerAnimated:flag completion:^{
         NSArray *windows = [UIApplication sharedApplication].windows;
         NSEnumerator *reverseEnumerator = [windows reverseObjectEnumerator];
