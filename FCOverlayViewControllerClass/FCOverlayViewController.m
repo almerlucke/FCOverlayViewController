@@ -58,24 +58,26 @@
     
     if (self.viewControllerToPresent) {
         // present the view controller
-        [self presentViewController:self.viewControllerToPresent
-                           animated:self.showAnimated
-                         completion:^{
+		dispatch_async(dispatch_get_main_queue(), ^{
+			[self presentViewController:self.viewControllerToPresent
+					animated:self.showAnimated
+					completion:^{
 
-			if(self.completionBlock)
-			{
-				self.completionBlock();
-			}
-			
-			if(self.shouldDismissWhenReady)
-			{
-				[self dismissViewControllerAnimated:NO completion:nil];
-			}
+				if (self.completionBlock)
+				{
+					self.completionBlock();
+				}
 
-		}];
-        
-        // make sure we never present the view controller again (for example after it is dismissed)
-        self.viewControllerToPresent = nil;
+				if (self.shouldDismissWhenReady)
+				{
+					[self dismissViewControllerAnimated:NO completion:nil];
+				}
+
+			}];
+
+			// make sure we never present the view controller again (for example after it is dismissed)
+			self.viewControllerToPresent = nil;
+		});
     }
 }
 
