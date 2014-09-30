@@ -12,9 +12,9 @@
 #import "ExampleViewController.h"
 #import "AlertViewController.h"
 #import "ExampleTransitioningDelegate.h"
+#import "TestTextInputViewController.h"
 
-
-@interface BaseViewController ()
+@interface BaseViewController () <TestTextInputViewControllerDelegate>
 @property (nonatomic, strong) ExampleTransitioningDelegate *transitioningDelegate;
 @property (nonatomic, strong) UIImageView *catImageView;
 @property (nonatomic, strong) UIButton *button1;
@@ -96,6 +96,32 @@
     self.button3.frame = frame;
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    static dispatch_once_t _once_token;
+    
+    dispatch_once(&_once_token, ^{
+        TestTextInputViewController *testController = [[TestTextInputViewController alloc] init];
+        testController.delegate = self;
+        [self presentViewController:testController animated:YES completion:nil];
+    });
+}
+
+- (void)didDismissTestTextInputViewController:(TestTextInputViewController *)controller
+{
+    ExampleViewController *exampleController = [[ExampleViewController alloc] init];
+    
+    exampleController.transitioningDelegate = self.transitioningDelegate;
+    
+    [FCOverlay presentOverlayWithViewController:exampleController
+                                    windowLevel:UIWindowLevelNormal
+                                     fromWindow:self.view.window
+                                       animated:YES
+                                     completion:nil];
+}
+
 - (IBAction)showOverlay:(id)sender
 {
     ExampleViewController *exampleController = [[ExampleViewController alloc] init];
@@ -104,6 +130,7 @@
     
     [FCOverlay presentOverlayWithViewController:exampleController
                                     windowLevel:UIWindowLevelNormal
+                                     fromWindow:self.view.window
                                        animated:YES
                                      completion:nil];
 }
@@ -118,6 +145,7 @@
     
     [FCOverlay presentOverlayWithViewController:alertController
                                     windowLevel:UIWindowLevelAlert
+                                     fromWindow:self.view.window
                                        animated:NO
                                      completion:nil];
 }
@@ -133,6 +161,7 @@
      // queue the first alert
     [FCOverlay queueOverlayWithViewController:alertController
                                   windowLevel:UIWindowLevelAlert
+                                   fromWindow:self.view.window
                                      animated:NO
                                    completion:nil];
     
@@ -145,6 +174,7 @@
     
     [FCOverlay queueOverlayWithViewController:alertController
                                   windowLevel:UIWindowLevelAlert
+                                   fromWindow:self.view.window
                                      animated:NO
                                    completion:nil];
 }

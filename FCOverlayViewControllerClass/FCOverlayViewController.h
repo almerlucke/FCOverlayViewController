@@ -34,4 +34,13 @@
                         queued:(BOOL)queued
                     completion:(void (^)(void))completion;
 
+
+
+- (instancetype)initWithWindow:(UIWindow *)window
+                    fromWindow:(UIWindow *)fromWindow
+                viewController:(UIViewController *)viewController
+                      animated:(BOOL)animated
+                        queued:(BOOL)queued
+                    completion:(void (^)(void))completion;
+
 @end

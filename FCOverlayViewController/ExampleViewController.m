@@ -127,6 +127,7 @@
     
     [FCOverlay presentOverlayWithViewController:showController
                                     windowLevel:UIWindowLevelAlert
+                                     fromWindow:self.view.window
                                        animated:YES
                                      completion:nil];
 }

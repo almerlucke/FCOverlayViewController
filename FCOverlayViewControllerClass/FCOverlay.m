@@ -14,6 +14,7 @@
 // Private queue entry class
 @interface FCOverlayQueueEntry : NSObject
 @property (nonatomic, strong) UIViewController *controller;
+@property (nonatomic, weak) UIWindow *fromWindow;
 @property (nonatomic) BOOL animated;
 @property (nonatomic, copy) void (^completion)();
 @property (nonatomic) UIWindowLevel windowLevel;
@@ -79,6 +80,7 @@
         if (entry) {
             [[self class] presentOverlayWithViewController:entry.controller
                                                windowLevel:entry.windowLevel
+                                                fromWindow:entry.fromWindow
                                                   animated:entry.animated
                                                     queued:YES
                                                 completion:entry.completion];
@@ -93,6 +95,7 @@
 
 - (void)queueOverlayWithViewController:(UIViewController *)controller
                            windowLevel:(UIWindowLevel)windowLevel
+                            fromWindow:(UIWindow *)fromWindow
                               animated:(BOOL)animated
                             completion:(void (^)())completion
 {
@@ -101,11 +104,13 @@
     entry.animated = animated;
     entry.completion = completion;
     entry.windowLevel = windowLevel;
+    entry.fromWindow = fromWindow;
     
     if ([_overlayQueue count] == 0) {
         // present immediately
         [[self class] presentOverlayWithViewController:controller
                                            windowLevel:windowLevel
+                                            fromWindow:fromWindow
                                               animated:animated
                                                 queued:YES
                                             completion:completion];
@@ -121,6 +126,7 @@
 {
     [self queueOverlayWithViewController:controller
                              windowLevel:UIWindowLevelNormal
+                              fromWindow:nil
                                 animated:animated
                               completion:completion];
 }
@@ -132,6 +138,20 @@
 {
     [[self sharedInstance] queueOverlayWithViewController:controller
                                               windowLevel:windowLevel
+                                               fromWindow:nil
+                                                 animated:animated
+                                               completion:completion];
+}
+
++ (void)queueOverlayWithViewController:(UIViewController *)controller
+                           windowLevel:(UIWindowLevel)windowLevel
+                            fromWindow:(UIWindow *)fromWindow
+                              animated:(BOOL)animated
+                            completion:(void (^)())completion
+{
+    [[self sharedInstance] queueOverlayWithViewController:controller
+                                              windowLevel:windowLevel
+                                               fromWindow:fromWindow
                                                  animated:animated
                                                completion:completion];
 }
@@ -145,6 +165,7 @@
 {
     [self presentOverlayWithViewController:controller
                                windowLevel:UIWindowLevelNormal
+                                fromWindow:nil
                                   animated:animated
                                     queued:NO
                                 completion:completion];
@@ -157,6 +178,7 @@
 {
     [self presentOverlayWithViewController:controller
                                windowLevel:windowLevel
+                                fromWindow:nil
                                   animated:animated
                                     queued:NO
                                 completion:completion];
@@ -164,10 +186,25 @@
 
 + (void)presentOverlayWithViewController:(UIViewController *)controller
                              windowLevel:(UIWindowLevel)windowLevel
+                              fromWindow:(UIWindow *)fromWindow
+                                animated:(BOOL)animated
+                              completion:(void (^)())completion
+{
+    [self presentOverlayWithViewController:controller
+                               windowLevel:windowLevel
+                                fromWindow:fromWindow
+                                  animated:animated
+                                    queued:NO
+                                completion:completion];
+}
+
++ (void)presentOverlayWithViewController:(UIViewController *)controller
+                             windowLevel:(UIWindowLevel)windowLevel
+                              fromWindow:(UIWindow *)fromWindow
                                 animated:(BOOL)animated
                                   queued:(BOOL)queued
                               completion:(void (^)())completion
-{    
+{
     // the new window frame is set to mainScreen bounds
     CGRect windowFrame = [UIScreen mainScreen].bounds;
     
@@ -176,6 +213,7 @@
     
     // create in-between view controller to present the overlaid view controller
     FCOverlayViewController *overlayController = [[FCOverlayViewController alloc] initWithWindow:newWindow
+                                                                                      fromWindow:fromWindow
                                                                                   viewController:controller
                                                                                         animated:animated
                                                                                           queued:queued
@@ -187,7 +225,6 @@
     newWindow.windowLevel = windowLevel;
     [newWindow makeKeyAndVisible];
 }
-
 
 #pragma mark - Dismiss
 
@@ -219,9 +256,10 @@
     [[self sharedInstance] emptyQueue];
     
     NSArray *windows = [UIApplication sharedApplication].windows;
+    NSEnumerator *reverseEnumerator = [windows reverseObjectEnumerator];
     
     // loop through all active windows and dismiss if they are presented by FCOverlay
-    for (UIWindow *window in windows) {
+    for (UIWindow *window in reverseEnumerator) {
         if ([window.rootViewController isKindOfClass:[FCOverlayViewController class]]) {
             [window.rootViewController dismissViewControllerAnimated:NO completion:nil];
         }

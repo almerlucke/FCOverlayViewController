@@ -62,6 +62,23 @@
                             completion:(void (^)())completion;
 
 /**
+ *  Queue an overlay to be presented with a specific window level. If the queue is empty, present it immediately,
+ *  otherwise put it in the queue for later presentation. Overlays which are queued
+ *  are fetched fifo style from the queue when the currently presented overlay is dismissed
+ *
+ *  @param controller the view controller to present
+ *  @param windowLevel the window level for the presented controller
+ *  @param fromWindow the window presented from, this window is made key again after dismissal
+ *  @param animated   show animated or not
+ *  @param completion completion block called when finished presenting
+ */
++ (void)queueOverlayWithViewController:(UIViewController *)controller
+                           windowLevel:(UIWindowLevel)windowLevel
+                            fromWindow:(UIWindow *)fromWindow
+                              animated:(BOOL)animated
+                            completion:(void (^)())completion;
+
+/**
  *  Called from FCOverlayViewController when it has been dismissed. This method fetches and 
  *  presents the next overlay in the queue. You should not call this method directly!
  */
@@ -88,6 +105,21 @@
  */
 + (void)presentOverlayWithViewController:(UIViewController *)controller
                              windowLevel:(UIWindowLevel)windowLevel
+                                animated:(BOOL)animated
+                              completion:(void (^)())completion;
+
+/**
+ *  Present a view controller in a new window with a specific window level
+ *
+ *  @param controller the view controller to present
+ *  @param windowLevel the window level for the presented controller
+ *  @param fromWindow the window where we are presenting from, if set this window is made key again after dismissal
+ *  @param animated show animated or not
+ *  @param completion completion block called when finished presenting
+ */
++ (void)presentOverlayWithViewController:(UIViewController *)controller
+                             windowLevel:(UIWindowLevel)windowLevel
+                              fromWindow:(UIWindow *)fromWindow
                                 animated:(BOOL)animated
                               completion:(void (^)())completion;
 
