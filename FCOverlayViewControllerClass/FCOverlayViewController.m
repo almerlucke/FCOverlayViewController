@@ -206,8 +206,6 @@
         // any _UIModalItemHostingWindow that are below us in the window hierarchy
         self.currentWindow.windowLevel = UIWindowLevelNormal;
         
-        NSLog(@"window %@, root %@", keyWindow, keyWindow.rootViewController);
-        
         // restore key window
         [keyWindow makeKeyAndVisible];
         [keyWindow becomeFirstResponder];
