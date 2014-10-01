@@ -171,9 +171,10 @@
 // dismiss the overlay controller and corresponding window
 - (void)dismissViewControllerAnimated:(BOOL)flag completion:(void (^)(void))completion
 {
+	self.shouldDismissWhenReady = YES;
+
 	if(self.presentedViewController && self.presentedViewController.isBeingPresented)
 	{
-		self.shouldDismissWhenReady = YES;
 		return;
 	}
 
@@ -217,6 +218,8 @@
             // dequeue the next queued overlay
             [FCOverlay dequeue];
         }
+
+		self.shouldDismissWhenReady = NO;
         
         // call completion block
         if (completion) completion();
