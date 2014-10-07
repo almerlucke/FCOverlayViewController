@@ -68,7 +68,9 @@
 				}
 
 				if (self.shouldDismissWhenReady) {
-					[self dismissViewControllerAnimated:NO completion:nil];
+					dispatch_async(dispatch_get_main_queue(), ^{
+						[self dismissViewControllerAnimated:NO completion:nil];
+					});
 				}
 
 			}];
