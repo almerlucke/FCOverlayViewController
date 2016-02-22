@@ -150,7 +150,7 @@
     return [viewController shouldAutorotateToInterfaceOrientation:toInterfaceOrientation];
 }
 
-- (NSUInteger)supportedInterfaceOrientations
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations
 {
     UIViewController *viewController = self.viewControllerToPresent;
     
@@ -173,8 +173,7 @@
 {
 	self.shouldDismissWhenReady = YES;
 
-	if(self.presentedViewController && self.presentedViewController.isBeingPresented)
-	{
+	if(self.presentedViewController && self.presentedViewController.isBeingPresented) {
 		return;
 	}
 
@@ -188,7 +187,7 @@
             NSEnumerator *reverseEnumerator = [windows reverseObjectEnumerator];
             
             // get current key window
-            UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
+            keyWindow = [UIApplication sharedApplication].keyWindow;
             
             // if we are the key window, find the next window in the hierarchy that
             // should be made key
@@ -196,9 +195,8 @@
                 for (UIWindow *window in reverseEnumerator) {
                     if (window.rootViewController && window.rootViewController != self) {
                         keyWindow = window;
+                        break;
                     }
-                    
-                    break;
                 }
             }
         }
