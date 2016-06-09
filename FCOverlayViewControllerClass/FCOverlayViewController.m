@@ -8,6 +8,7 @@
 
 #import "FCOverlayViewController.h"
 #import "FCOverlay.h"
+#import "UIAlertController+supportedInterfaceOrientations.h"
 
 
 // private interface
@@ -158,8 +159,12 @@
         viewController = self.presentedViewController;
     }
     
-    // forward call to presented view controller
-    return [viewController supportedInterfaceOrientations];
+    if ([viewController respondsToSelector:@selector(supportedInterfaceOrientations)]) {
+        // forward call to presented view controller
+        return [viewController supportedInterfaceOrientations];
+    }
+    
+    return UIInterfaceOrientationMaskAll;
 }
 
 

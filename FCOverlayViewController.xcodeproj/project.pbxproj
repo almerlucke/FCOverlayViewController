@@ -31,6 +31,7 @@
 		CB3CC79E184FEC0A00C6CAF2 /* FCOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3CC79D184FEC0A00C6CAF2 /* FCOverlay.m */; };
 		CB67DEFF184FDB8600512CC8 /* FCOverlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB67DEFE184FDB8600512CC8 /* FCOverlayViewController.m */; };
 		CB80D72319DB0CCB00C9F3A0 /* TestTextInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB80D72219DB0CCB00C9F3A0 /* TestTextInputViewController.m */; };
+		CB8CDF8B1D09805D00B44CF7 /* UIAlertController+supportedInterfaceOrientations.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8CDF8A1D09805D00B44CF7 /* UIAlertController+supportedInterfaceOrientations.m */; };
 		CBBB29241858ACDD00AAF200 /* todo in Resources */ = {isa = PBXBuildFile; fileRef = CBBB29231858ACDD00AAF200 /* todo */; };
 		CBBB29271858B16200AAF200 /* ExampleTransitioningDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CBBB29261858B16200AAF200 /* ExampleTransitioningDelegate.m */; };
 		CBBB292A1858B1CD00AAF200 /* ExampleTransitioning.m in Sources */ = {isa = PBXBuildFile; fileRef = CBBB29291858B1CD00AAF200 /* ExampleTransitioning.m */; };
@@ -81,6 +82,8 @@
 		CB67DEFE184FDB8600512CC8 /* FCOverlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCOverlayViewController.m; sourceTree = "<group>"; };
 		CB80D72119DB0CCB00C9F3A0 /* TestTextInputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestTextInputViewController.h; sourceTree = "<group>"; };
 		CB80D72219DB0CCB00C9F3A0 /* TestTextInputViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestTextInputViewController.m; sourceTree = "<group>"; };
+		CB8CDF891D09805D00B44CF7 /* UIAlertController+supportedInterfaceOrientations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+supportedInterfaceOrientations.h"; sourceTree = "<group>"; };
+		CB8CDF8A1D09805D00B44CF7 /* UIAlertController+supportedInterfaceOrientations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+supportedInterfaceOrientations.m"; sourceTree = "<group>"; };
 		CBBB29231858ACDD00AAF200 /* todo */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = todo; sourceTree = "<group>"; };
 		CBBB29251858B16200AAF200 /* ExampleTransitioningDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExampleTransitioningDelegate.h; sourceTree = "<group>"; };
 		CBBB29261858B16200AAF200 /* ExampleTransitioningDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExampleTransitioningDelegate.m; sourceTree = "<group>"; };
@@ -147,6 +150,8 @@
 		CB2C52A0182FC298009D63C1 /* FCOverlayViewController */ = {
 			isa = PBXGroup;
 			children = (
+				CB8CDF891D09805D00B44CF7 /* UIAlertController+supportedInterfaceOrientations.h */,
+				CB8CDF8A1D09805D00B44CF7 /* UIAlertController+supportedInterfaceOrientations.m */,
 				CB67DEFC184FDB6200512CC8 /* FCOverlayViewControllerClass */,
 				CB2C52D2182FC386009D63C1 /* ExampleViewController.h */,
 				CB2C52D3182FC386009D63C1 /* ExampleViewController.m */,
@@ -325,6 +330,7 @@
 				CB2C52D7182FC45B009D63C1 /* BaseViewController.m in Sources */,
 				CB80D72319DB0CCB00C9F3A0 /* TestTextInputViewController.m in Sources */,
 				CB2C52AB182FC298009D63C1 /* AppDelegate.m in Sources */,
+				CB8CDF8B1D09805D00B44CF7 /* UIAlertController+supportedInterfaceOrientations.m in Sources */,
 				CB2C52A7182FC298009D63C1 /* main.m in Sources */,
 				CB3CC79E184FEC0A00C6CAF2 /* FCOverlay.m in Sources */,
 			);

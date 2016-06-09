@@ -20,6 +20,7 @@
 @property (nonatomic, strong) UIButton *button1;
 @property (nonatomic, strong) UIButton *button2;
 @property (nonatomic, strong) UIButton *button3;
+@property (nonatomic, strong) UIButton *button4;
 @end
 
 
@@ -62,6 +63,15 @@
     self.button3.titleLabel.font = [UIFont boldSystemFontOfSize:16];
     [self.button3 addTarget:self action:@selector(showQueuedAlerts:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.button3];
+    
+    self.button4 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [self.button4 setTitle:@"Show alert controller" forState:UIControlStateNormal];
+    [self.button4 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.button4 setTitleShadowColor:[UIColor blackColor] forState:UIControlStateNormal];
+    self.button4.titleLabel.shadowOffset = CGSizeMake(1, 1);
+    self.button4.titleLabel.font = [UIFont boldSystemFontOfSize:16];
+    [self.button4 addTarget:self action:@selector(showAlertController:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.button4];
 }
 
 - (void)viewWillLayoutSubviews
@@ -94,6 +104,13 @@
     frame.origin.x = 0;
     frame.origin.y = CGRectGetMaxY(self.button2.frame) + 40;
     self.button3.frame = frame;
+    
+    frame = self.button4.frame;
+    frame.size.width = size.width;
+    frame.size.height = 30;
+    frame.origin.x = 0;
+    frame.origin.y = CGRectGetMaxY(self.button3.frame) + 40;
+    self.button4.frame = frame;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -141,6 +158,25 @@
     
     alertController.alertTitleString = @"This is a custom alert";
     alertController.alertMessageString = @"It is presented with FCOverlay and it is great!";
+    alertController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    
+    [FCOverlay presentOverlayWithViewController:alertController
+                                    windowLevel:UIWindowLevelAlert
+                                     fromWindow:self.view.window
+                                       animated:NO
+                                     completion:nil];
+}
+
+- (IBAction)showAlertController:(id)sender
+{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"This is an Apple alert"
+                                                                             message:@"It is presented with FCOverlay and it is great!"
+                                                                      preferredStyle:UIAlertControllerStyleAlert];
+    
+    [alertController addAction:[UIAlertAction actionWithTitle:@"OK"
+                                                        style:UIAlertActionStyleDefault
+                                                      handler:nil]];
+
     alertController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     
     [FCOverlay presentOverlayWithViewController:alertController
